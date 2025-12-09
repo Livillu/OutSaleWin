@@ -1,0 +1,148 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Csharp\\OutSale\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsale\\wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\foveracount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\foveracount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSale\\wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserOtherIO.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\UserOtherIO.cs",
+              "RelativeDocumentMoniker": "WTools\\UserOtherIO.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\UserOtherIO.cs",
+              "RelativeToolTip": "WTools\\UserOtherIO.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAawBMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T08:10:20.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "invoice.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\invoice.cs",
+              "RelativeDocumentMoniker": "WTools\\invoice.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\invoice.cs",
+              "RelativeToolTip": "WTools\\invoice.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAApwBQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T05:28:13.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserOtherIO.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\UserOtherIO.cs",
+              "RelativeDocumentMoniker": "WTools\\UserOtherIO.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\UserOtherIO.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\UserOtherIO.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T08:10:26.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserClientDesk.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\PostDesk\\UserClientDesk.cs",
+              "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\PostDesk\\UserClientDesk.cs",
+              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAhwCoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T07:20:54.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserClientDesk.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\PostDesk\\UserClientDesk.cs",
+              "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T07:20:49.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\Form1.cs",
+              "RelativeDocumentMoniker": "WTools\\Form1.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\Form1.cs",
+              "RelativeToolTip": "WTools\\Form1.cs",
+              "ViewState": "AgIAAFICAAAAAAAAAIA5wGACAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T08:05:44.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\Form1.cs",
+              "RelativeDocumentMoniker": "WTools\\Form1.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\Form1.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\Form1.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T08:11:22.072Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FOverAcount.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSale\\WTools\\FOverAcount.cs",
+              "RelativeDocumentMoniker": "WTools\\FOverAcount.cs",
+              "ToolTip": "D:\\Csharp\\OutSale\\WTools\\FOverAcount.cs",
+              "RelativeToolTip": "WTools\\FOverAcount.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAApwCMAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T08:55:10.573Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
