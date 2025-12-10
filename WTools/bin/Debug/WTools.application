@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="WTools.exe.manifest" size="19505">
+    <dependentAssembly dependencyType="install" codebase="WTools.exe.manifest" size="56700">
       <assemblyIdentity name="WTools.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>df3hb2p3EzXoFlS0iyIyF7jYx84qCV99m7JU6aiuXbg=</dsig:DigestValue>
+        <dsig:DigestValue>MMPCEg7Clf4yHYI+TlMg2/nGleiAC1oksk5CqsTHBb8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

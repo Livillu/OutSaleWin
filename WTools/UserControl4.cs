@@ -40,7 +40,8 @@ namespace WTools
             SqlCommand cmd = new SqlCommand(sqlstring, conn);
             cmd.Connection.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
-            DT.Load(sdr);           
+            DT.Load(sdr);
+            label3.Text=DT.Rows.Count.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)

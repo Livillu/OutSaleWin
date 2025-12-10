@@ -14,7 +14,7 @@ namespace WTools
 {
     public partial class invoice : Form
     {
-        public string msg = "發票作廢成功....";
+        public string msg = "";
         public invoice()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace WTools
         {
             if (textBox1.Text.Trim().Length > 0 && textBox1.Text.Trim().Length == 10)
             {
-                msg = textBox1.Text.Trim();
+                //msg = textBox1.Text.Trim();
                 //刪除交易資料
                 DataTable dt = new DataTable();
 
@@ -59,6 +59,8 @@ namespace WTools
                         cmd1.CommandText = "Update MSales SET [Isok]='0' WHERE Sno='" + textBox1.Text.Trim() + "'";
                         cmd1.ExecuteNonQuery();
                         sqlTransaction.Commit();
+                        this.Close();
+
                     } catch { 
                         if(sqlTransaction != null)
                         {
@@ -75,6 +77,10 @@ namespace WTools
             else
             {
                 msg = "輸入發票號碼錯誤!!!";
+            }
+            if (msg != "")
+            {
+                MessageBox.Show(msg);
             }
         }
         public List<string> GetMsg()

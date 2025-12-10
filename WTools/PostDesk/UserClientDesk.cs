@@ -1,15 +1,11 @@
 ﻿using ScottPlot.Hatches;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
-using System.Xml.Linq;
 using static WTools.InvoicePrint;
 
 namespace WTools.PostDesk
@@ -17,6 +13,7 @@ namespace WTools.PostDesk
     public partial class UserClientDesk : UserControl
     {
         public static DataTable Discounts,CheckDt;
+        Button[] TmpButton = new Button[3];
         public UserClientDesk()
         {
             InitializeComponent();
@@ -43,10 +40,11 @@ namespace WTools.PostDesk
         private void button3_Click(object sender, EventArgs e)
         {
             invoice inv = new invoice();
-            DialogResult result = inv.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> msg = inv.GetMsg();
+            inv.ShowDialog();
+            //DialogResult result = inv.ShowDialog();
+            //if (result == DialogResult.OK)
+            //{
+            List<string> msg = inv.GetMsg();
                 if (msg.Count > 0)
                 {
                     invoiceClear();
@@ -67,7 +65,7 @@ namespace WTools.PostDesk
 
                     }
                 }
-            }
+            //}
         }
        
         private int ItemsDiscount(DataTable dt)
@@ -196,8 +194,8 @@ namespace WTools.PostDesk
             {
                 var tmp = Convert.ToInt32(numericUpDown1.Text) - Convert.ToInt32(textBox7.Text);
                 textBox3.Text = tmp.ToString();
-                if (tmp < 0) textBox3.ForeColor = Color.Red;
-                else textBox3.ForeColor = Color.DeepSkyBlue;
+                if (tmp < 0) textBox3.ForeColor = System.Drawing.Color.Red;
+                else textBox3.ForeColor = System.Drawing.Color.DeepSkyBlue;
                 if (tmp >= 0 && textBox1.Text.Trim().Length == 10) button5.Enabled = true;
                 else button5.Enabled = false;
             }
@@ -290,46 +288,96 @@ namespace WTools.PostDesk
                 numericUpDown1.Text = (Convert.ToInt32(numericUpDown1.Text) + Convert.ToDecimal(((Button)sender).Text)).ToString();
             }
         }
+        private void TmpButtonConfig(int i)
+        {
+            
+            if (TmpButton[i].BackColor == Color.LightGreen)
+            {
+                if (MainForm.DTsale.Rows.Count > 0)
+                {
+                    DataTable dt = new DataTable();
+                    dt = MainForm.DTsale.Copy();
+                    MainForm.TmpsTable[0] = dt;
+                    TmpButton[i].BackColor = Color.OrangeRed;
+                    invoiceClear();
+                }
+            }
+            else if (TmpButton[i].BackColor == Color.OrangeRed)
+            {
+                if (MainForm.TmpsTable[0].Rows.Count > 0)
+                {
+                    MainForm.DTsale.Rows.Clear();
+                    foreach (DataRow row in MainForm.TmpsTable[0].Rows)
+                    {
+                        DataRow dr = MainForm.DTsale.NewRow();
+                        for (int j = 0; j < 7; j++)
+                        {
+                            dr[j] = row[j];
+                        }
+                        MainForm.DTsale.Rows.Add(dr);
+                    }
+                    MainForm.TmpsTable[0].Rows.Clear();
+                    RowsSun();
+                    //取得發票編號
+                    SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+                    SqlCommand cmd1 = new SqlCommand("SELECT [F4] FROM [OtherConfigs] where [FSno]=1", conn1);
+                    cmd1.Connection.Open();
+                    textBox1.Text = cmd1.ExecuteScalar().ToString();
+                    cmd1.Connection.Close();
+                }
+                TmpButton[i].BackColor = Color.LightGreen;
+            }
+        }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //寫入資料
-            InvoicePrint oPrinter = new InvoicePrint();
-
-            //送出列印
-            InvoiceData data = new InvoiceData();
-            int year = DateTime.Today.Year - 1911;
-            string month = DateTime.Today.ToString("MM");
-            string day = DateTime.Today.ToString("dd");
-            if (Convert.ToInt16(month) % 2 == 0)
-            {
-                data.InvoiceDruin = $"{year}{month}";
-            }
-            else
-            {
-                data.InvoiceDruin = $"{year}{Convert.ToInt16(month) + 1}";
-            }
-
-
-            data.InvoiceNumber = textBox1.Text;
-            data.InvoiceDate = DateTime.Today.ToString($"{year}-MM-dd");
-            data.InvoiceTime = DateTime.Now.ToString("HH:MM:ss");
-            data.TotalAmount = Convert.ToInt16(textBox4.Text);
-            data.BuyerIdentifier = textBox5.Text;
-            data.BarCode = oPrinter.BarCodeINV(data.InvoiceDruin, data.InvoiceNumber, data.RandomNumber);
-            data.QRCode2 = new List<Product>();
-            foreach (DataRow dr in MainForm.DTsale.Rows)
-            {
-                Product product = new Product();
-                product.Name = dr[0].ToString();
-                product.Price = Convert.ToInt16(dr[1]);
-                product.Qutys = Convert.ToInt16(dr[2]);
-                data.QRCode2.Add(product);
-            }
-            oPrinter.MastQrcode = data;
-            oPrinter.Print();
+            TmpButtonConfig(0);
         }
 
+        private void TB001_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                int isok = -1;
+                for (int i = 0; i < MainForm.PDT.Rows.Count; i++)
+                {
+                    string tmp = MainForm.PDT.Rows[i][0].ToString().Trim();
+                    if (tmp == textBox2.Text.Trim())
+                    {
+                        isok = i;
+                        break;
+                    }
+                }
+                if (isok > -1)
+                {
+                    textBox2.Text = "";
+                    textBox2.Focus();
+                    DataRow dr1 = MainForm.PDT.Rows[isok];
+                    DataRow dr2 = MainForm.DTsale.NewRow();
+                    dr2[0] = dr1[1];
+                    dr2[4] = dr1[0];
+                    dr2[1] = dr1[4];
+                    dr2[5] = dr1[5];
+                    dr2[6] = dr1[6];
+                    if (MainForm.DTsale.Rows.Count == 0)
+                    {
+                        //取得發票編號
+                        SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+                        SqlCommand cmd1 = new SqlCommand("SELECT [F4] FROM [OtherConfigs] where [FSno]=1", conn1);
+                        cmd1.Connection.Open();
+                        textBox1.Text = cmd1.ExecuteScalar().ToString();
+                        //string NO2=NO1.Substring(6,4);
+                    }
+                    dr2[2] = 1;
+                    dr2[3] = 1 * Convert.ToInt32(dr1[4]);
+                    MainForm.DTsale.Rows.Add(dr2);
+                    RowsSun();
+                }
+            }
+        }
+
+
+        /*
         private void TB001_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -377,7 +425,7 @@ namespace WTools.PostDesk
                 }
             }
         }
-
+        */
         private void button12_Click(object sender, EventArgs e)
         {
             textBox2.Text = "";
@@ -394,6 +442,15 @@ namespace WTools.PostDesk
 
         private void UserControl2_Load_1(object sender, EventArgs e)
         {
+            TmpButton[0] = button11;
+            TmpButton[1] = button22;
+            TmpButton[2] = button23;
+            for (int i = 0; i < 3; i++)
+            {
+                if (MainForm.TmpsTable[i] == null || MainForm.TmpsTable[i].Rows.Count == 0) TmpButton[i].BackColor = Color.LightGreen;
+                else TmpButton[i].BackColor = Color.OrangeRed;
+            }
+
             textBox2.Focus();
             string sql = "SELECT [MB001],[MB002],[MB004],[MB064],[MB051],0 Gp,[GpSno] FROM [Products] union SELECT [GpId],[GpName],'',99,[GpPrice],1,'' FROM [GpProductM] WHERE 1=1";
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
@@ -453,7 +510,7 @@ namespace WTools.PostDesk
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private int CheckOrder()
         {
             CheckDt.Rows.Clear();
             foreach (DataRow dr in Discounts.Rows)
@@ -469,7 +526,7 @@ namespace WTools.PostDesk
                     {
                         Quty += Convert.ToInt16(dr1["MB064"]);
                         Price += Convert.ToInt16(dr1["MB064"]) * Convert.ToInt16(dr1["MB051"]);
-                        Ptname= dr1["MB002"].ToString();
+                        Ptname = dr1["MB002"].ToString();
                     }
                 }
                 //判定量Quty
@@ -485,7 +542,7 @@ namespace WTools.PostDesk
                         //現金折扣
                         if (Convert.ToInt16(dr["SubMoney"]) > 0)
                         {
-                            DataRow tmpdr= CheckDt.NewRow();
+                            DataRow tmpdr = CheckDt.NewRow();
                             tmpdr[0] = Ptname;//產品名稱
                             tmpdr[1] = GpName;//專案名稱
                             tmpdr[2] = LimitQuty - counts;//缺少數量
@@ -502,7 +559,7 @@ namespace WTools.PostDesk
                                 tmpdr[1] = GpName;
                                 tmpdr[2] = LimitQuty - counts;//缺少數量
                                 tmpdr[3] = Convert.ToInt32(Convert.ToDecimal(dr["SubDiscount"]) % 100 * Convert.ToDecimal(Price));//優惠折扣
-                                CheckDt.Rows.Add(tmpdr);          
+                                CheckDt.Rows.Add(tmpdr);
                             }
                         }
                     }
@@ -537,17 +594,77 @@ namespace WTools.PostDesk
                                 tmpdr[1] = GpName;
                                 tmpdr[2] = LimitPrice - Price;//缺少金額
                                 tmpdr[3] = Convert.ToInt32(Convert.ToDecimal(dr["SubDiscount"]) % 100 * Convert.ToDecimal(Price));
-                                CheckDt.Rows.Add(tmpdr);  
+                                CheckDt.Rows.Add(tmpdr);
                             }
                         }
                     }
-                }                
+                }
             }
-            if (CheckDt.Rows.Count > 0)
+            return CheckDt.Rows.Count;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {           
+            if (CheckOrder() > 0)
             {
                 FShowLost showLost = new FShowLost(CheckDt);
                 showLost.ShowDialog(this);
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            TmpButtonConfig(1);
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            TmpButtonConfig(2);
+        }
+
+        //發票列印
+        private void InvoicePrint()
+        {
+            //寫入資料
+            InvoicePrint oPrinter = new InvoicePrint();
+
+            //送出列印
+            InvoiceData data = new InvoiceData();
+            int year = DateTime.Today.Year - 1911;
+            string month = DateTime.Today.ToString("MM");
+            string day = DateTime.Today.ToString("dd");
+            if (Convert.ToInt16(month) % 2 == 0)
+            {
+                data.InvoiceDruin = $"{year}{month}";
+            }
+            else
+            {
+                data.InvoiceDruin = $"{year}{Convert.ToInt16(month) + 1}";
+            }
+
+
+            data.InvoiceNumber = textBox1.Text;
+            data.InvoiceDate = DateTime.Today.ToString($"{year}-MM-dd");
+            data.InvoiceTime = DateTime.Now.ToString("HH:MM:ss");
+            data.TotalAmount = Convert.ToInt16(textBox4.Text);
+            data.BuyerIdentifier = textBox5.Text;
+            data.BarCode = oPrinter.BarCodeINV(data.InvoiceDruin, data.InvoiceNumber, data.RandomNumber);
+            data.QRCode2 = new List<Product>();
+            foreach (DataRow dr in MainForm.DTsale.Rows)
+            {
+                Product product = new Product();
+                product.Name = dr[0].ToString();
+                product.Price = Convert.ToInt16(dr[1]);
+                product.Qutys = Convert.ToInt16(dr[2]);
+                data.QRCode2.Add(product);
+            }
+            oPrinter.MastQrcode = data;
+            oPrinter.Print();
         }
     }
 }

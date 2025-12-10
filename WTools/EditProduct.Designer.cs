@@ -31,6 +31,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox6 = new System.Windows.Forms.NumericUpDown();
+            this.textBox7 = new System.Windows.Forms.NumericUpDown();
+            this.textBox5 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.combbox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,13 +47,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.NumericUpDown();
-            this.textBox7 = new System.Windows.Forms.NumericUpDown();
-            this.textBox6 = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -100,6 +100,35 @@
             this.groupBox1.Size = new System.Drawing.Size(603, 264);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(430, 194);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(120, 30);
+            this.textBox6.TabIndex = 17;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(430, 138);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(120, 30);
+            this.textBox7.TabIndex = 16;
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(114, 132);
+            this.textBox5.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(146, 30);
+            this.textBox5.TabIndex = 15;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
             // 
@@ -210,30 +239,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "品號";
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(114, 132);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(146, 30);
-            this.textBox5.TabIndex = 15;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(430, 138);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(120, 30);
-            this.textBox7.TabIndex = 16;
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(430, 194);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(120, 30);
-            this.textBox6.TabIndex = 17;
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // EditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -248,9 +253,9 @@
             this.Load += new System.EventHandler(this.EditProduct_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBox5)).EndInit();
             this.ResumeLayout(false);
 
         }

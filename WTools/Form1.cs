@@ -1,23 +1,10 @@
-﻿using OfficeOpenXml;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering;
-using OfficeOpenXml.Style;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Windows.Controls;
+
 using System.Windows.Forms;
 using WTools.warehouse;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace WTools
 {
@@ -27,7 +14,9 @@ namespace WTools
         public static string YScon = "Server =192.168.1.252;Database=YS;User ID=sa;Password=dsc@53290529;encrypt=false;";
         public static string OutPoscon = "Server=(localdb)\\MSSQLLocalDB;Database=OutPos;Integrated Security=true";
         public static string UserId = "System";
-        public static DataTable PDT, DTsale;
+        public static DataTable PDT;//折扣表
+        public static DataTable DTsale;//當前交易表
+        public static DataTable[] TmpsTable= { null, null, null };//暫存交易表
         public MainForm()
         {
             InitializeComponent();
@@ -35,12 +24,14 @@ namespace WTools
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as Button).Text;
             UserControl1 userControl1 = new UserControl1();
             panel2.Controls.Clear();
             panel2.Controls.Add(userControl1);
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as Button).Text;
             UserControl3 userControl3 = new UserControl3();
             panel2.Controls.Clear();
             panel2.Controls.Add(userControl3);
@@ -48,6 +39,7 @@ namespace WTools
 
         private void button2_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as Button).Text;
             PostDesk.UserClientDesk clientDesk=new PostDesk.UserClientDesk();
             panel2.Controls.Clear();
             panel2.Controls.Add(clientDesk);
@@ -158,6 +150,7 @@ namespace WTools
 
         private void button4_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             UserControl4 userControl4 = new UserControl4();
             panel2.Controls.Clear();
             panel2.Controls.Add(userControl4);
@@ -448,8 +441,7 @@ namespace WTools
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            string msg = "";
-            
+            string msg = "";       
             if (DialogResult.Yes == MessageBox.Show("即將清空現有交易資料!確定匯出...", "交易資料匯出ERP", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 //取出所有交易紀錄
@@ -470,18 +462,9 @@ namespace WTools
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             UserAssember userassember = new UserAssember();
             panel2.Controls.Clear();
             panel2.Controls.Add(userassember);
@@ -495,6 +478,7 @@ namespace WTools
 
         private void button12_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             UserDiscount userDiscount = new UserDiscount();
             panel2.Controls.Clear();
             panel2.Controls.Add(userDiscount);
@@ -502,6 +486,7 @@ namespace WTools
 
         private void 新增採購ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as ToolStripMenuItem).Text; 
             UserControl5 userControl5 = new UserControl5();
             panel2.Controls.Clear();
             panel2.Controls.Add(userControl5);
@@ -536,12 +521,14 @@ namespace WTools
 
         private void button8_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             FOverAcount fa=new FOverAcount();
             fa.ShowDialog();
         }
 
         private void button7_Click_1(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             UserOtherIO userotherio = new UserOtherIO();
             panel2.Controls.Clear();
             panel2.Controls.Add(userotherio);
@@ -549,6 +536,7 @@ namespace WTools
 
         private void 發票設定ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as System.Windows.Forms.Button).Text;
             UserInvConfig userinvconfig = new UserInvConfig();
             panel2.Controls.Clear();
             panel2.Controls.Add(userinvconfig);
@@ -563,6 +551,7 @@ namespace WTools
 
         private void 商品入庫ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as ToolStripMenuItem).Text;
             button4.PerformClick();
         }
 
@@ -575,6 +564,7 @@ namespace WTools
 
         private void 庫存統計ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as ToolStripMenuItem).Text;
             UserSearchstock usersearchstock = new UserSearchstock();
             panel2.Controls.Clear();
             panel2.Controls.Add(usersearchstock);
@@ -582,27 +572,31 @@ namespace WTools
 
         private void 商品轉庫ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            warehouse.UserAdjust userAdjust = new warehouse.UserAdjust();
+            label1.Text = (sender as ToolStripMenuItem).Text;
+            UserAdjust userAdjust = new UserAdjust();
             panel2.Controls.Clear();
             panel2.Controls.Add(userAdjust);
         }
 
         private void 品項分類ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            warehouse.UserProductClass useclass = new warehouse.UserProductClass();
+            label1.Text = (sender as ToolStripMenuItem).Text;
+            UserProductClass useclass = new UserProductClass();
             panel2.Controls.Clear();
             panel2.Controls.Add(useclass);
         }
 
         private void 盤點作業ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            warehouse.UserPtCheck useptcheck= new warehouse.UserPtCheck();
+            label1.Text = (sender as ToolStripMenuItem).Text; 
+            UserPtCheck useptcheck= new UserPtCheck();
             panel2.Controls.Clear();
             panel2.Controls.Add(useptcheck);
         }
 
         private void 廠商管理ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            label1.Text = (sender as ToolStripMenuItem).Text;
             BuyOrder.UseSupportInfo useSupportInfo = new BuyOrder.UseSupportInfo();
             panel2.Controls.Clear();
             panel2.Controls.Add(useSupportInfo);
@@ -610,9 +604,60 @@ namespace WTools
 
         private void 進貨作業ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            warehouse.UserOrderList userorderlist = new warehouse.UserOrderList();
+            label1.Text = (sender as ToolStripMenuItem).Text; 
+            UserOrderList userorderlist = new UserOrderList();
             panel2.Controls.Clear();
             panel2.Controls.Add(userorderlist);
+        }
+
+        private void 採購查詢ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 退貨作業ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 客戶基本資料ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 商品定價ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 報價作業ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 訂單管理ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 銷退管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 銷貨管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 庫存調整ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
+        }
+
+        private void 驗收入庫ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as ToolStripMenuItem).Text;
         }
 
         private void 採購入庫ToolStripMenuItem_Click(object sender, EventArgs e)
