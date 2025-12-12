@@ -105,10 +105,10 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 39);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 944);
+            this.panel1.Size = new System.Drawing.Size(195, 905);
             this.panel1.TabIndex = 0;
             // 
             // button8
@@ -142,7 +142,7 @@
             this.button12.Image = global::WTools.Properties.Resources.billing;
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.Location = new System.Drawing.Point(18, 503);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button12.Margin = new System.Windows.Forms.Padding(4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(156, 63);
             this.button12.TabIndex = 11;
@@ -156,7 +156,7 @@
             this.button11.Image = global::WTools.Properties.Resources.document_blueprint;
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button11.Location = new System.Drawing.Point(18, 573);
-            this.button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(156, 54);
             this.button11.TabIndex = 10;
@@ -170,7 +170,7 @@
             this.button10.Image = global::WTools.Properties.Resources.finished_work;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button10.Location = new System.Drawing.Point(17, 432);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(157, 63);
             this.button10.TabIndex = 9;
@@ -182,7 +182,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(17, 832);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(152, 54);
             this.button6.TabIndex = 5;
@@ -197,7 +197,7 @@
             this.button5.Image = global::WTools.Properties.Resources.money_dollar;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(18, 635);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(156, 54);
             this.button5.TabIndex = 4;
@@ -211,7 +211,7 @@
             this.button4.Image = global::WTools.Properties.Resources.database;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.Location = new System.Drawing.Point(18, 225);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(156, 63);
             this.button4.TabIndex = 3;
@@ -225,7 +225,7 @@
             this.button3.Image = global::WTools.Properties.Resources.document;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(18, 84);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 63);
             this.button3.TabIndex = 2;
@@ -239,7 +239,7 @@
             this.button2.Image = global::WTools.Properties.Resources.comment_edit;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(18, 17);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(156, 59);
             this.button2.TabIndex = 1;
@@ -253,7 +253,7 @@
             this.button1.Image = global::WTools.Properties.Resources._private;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(18, 154);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 63);
             this.button1.TabIndex = 0;
@@ -484,49 +484,49 @@
             // 發票設定ToolStripMenuItem
             // 
             this.發票設定ToolStripMenuItem.Name = "發票設定ToolStripMenuItem";
-            this.發票設定ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.發票設定ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.發票設定ToolStripMenuItem.Text = "發票機設定";
             this.發票設定ToolStripMenuItem.Click += new System.EventHandler(this.發票設定ToolStripMenuItem_Click);
             // 
             // 公司設定ToolStripMenuItem
             // 
             this.公司設定ToolStripMenuItem.Name = "公司設定ToolStripMenuItem";
-            this.公司設定ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.公司設定ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.公司設定ToolStripMenuItem.Text = "公司設定";
             this.公司設定ToolStripMenuItem.Click += new System.EventHandler(this.公司設定ToolStripMenuItem_Click);
             // 
             // 錢櫃準備金ToolStripMenuItem
             // 
             this.錢櫃準備金ToolStripMenuItem.Name = "錢櫃準備金ToolStripMenuItem";
-            this.錢櫃準備金ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.錢櫃準備金ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.錢櫃準備金ToolStripMenuItem.Text = "錢櫃準備金";
             this.錢櫃準備金ToolStripMenuItem.Click += new System.EventHandler(this.錢櫃準備金ToolStripMenuItem_Click);
             // 
             // 倉庫儲位ToolStripMenuItem
             // 
             this.倉庫儲位ToolStripMenuItem.Name = "倉庫儲位ToolStripMenuItem";
-            this.倉庫儲位ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.倉庫儲位ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.倉庫儲位ToolStripMenuItem.Text = "倉庫儲位";
             this.倉庫儲位ToolStripMenuItem.Click += new System.EventHandler(this.倉庫建立ToolStripMenuItem_Click);
             // 
             // xLS庫存匯入ToolStripMenuItem
             // 
             this.xLS庫存匯入ToolStripMenuItem.Name = "xLS庫存匯入ToolStripMenuItem";
-            this.xLS庫存匯入ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.xLS庫存匯入ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.xLS庫存匯入ToolStripMenuItem.Text = "XLS庫存匯入";
             this.xLS庫存匯入ToolStripMenuItem.Click += new System.EventHandler(this.button11_Click);
             // 
             // eRP庫存匯入ToolStripMenuItem
             // 
             this.eRP庫存匯入ToolStripMenuItem.Name = "eRP庫存匯入ToolStripMenuItem";
-            this.eRP庫存匯入ToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.eRP庫存匯入ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.eRP庫存匯入ToolStripMenuItem.Text = "ERP庫存匯入";
             this.eRP庫存匯入ToolStripMenuItem.Click += new System.EventHandler(this.button5_Click);
             // 
             // 交易匯入ERPToolStripMenuItem
             // 
             this.交易匯入ERPToolStripMenuItem.Name = "交易匯入ERPToolStripMenuItem";
-            this.交易匯入ERPToolStripMenuItem.Size = new System.Drawing.Size(215, 34);
+            this.交易匯入ERPToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.交易匯入ERPToolStripMenuItem.Text = "交易匯入ERP";
             this.交易匯入ERPToolStripMenuItem.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -593,10 +593,10 @@
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(195, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(195, 39);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1655, 944);
+            this.panel3.Size = new System.Drawing.Size(1655, 905);
             this.panel3.TabIndex = 4;
             // 
             // panel2
@@ -604,7 +604,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1655, 916);
+            this.panel2.Size = new System.Drawing.Size(1655, 877);
             this.panel2.TabIndex = 3;
             // 
             // label1
@@ -613,7 +613,7 @@
             this.label1.Font = new System.Drawing.Font("新細明體", 11.89565F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.Brown;
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(26, 26, 26, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1655, 28);
             this.label1.TabIndex = 0;
@@ -629,7 +629,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainTool";

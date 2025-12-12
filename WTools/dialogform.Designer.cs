@@ -40,9 +40,9 @@
             this.numericUpDown1.Font = new System.Drawing.Font("新細明體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.numericUpDown1.ForeColor = System.Drawing.Color.Brown;
             this.numericUpDown1.Location = new System.Drawing.Point(193, 150);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(5);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            9999,
+            99999,
             0,
             0,
             0});
@@ -75,7 +75,7 @@
             this.button1.Image = global::WTools.Properties.Resources.glyph_check;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(368, 147);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 57);
             this.button1.TabIndex = 2;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);
             this.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "dialogform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dialogform";

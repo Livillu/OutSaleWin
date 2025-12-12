@@ -203,6 +203,15 @@ namespace WTools.PostDesk
 
         private void button5_Click(object sender, EventArgs e)
         {
+            bool start = true;
+            if (CheckOrder() > 0)
+            {
+                FShowLost showLost = new FShowLost(CheckDt);
+                showLost.ShowDialog(this);
+                start=showLost.GetResult();
+
+            }
+            if (start == false) return;
             if (Convert.ToInt32(textBox3.Text) > -1 && textBox1.Text.Trim().Length == 10)
             {
                 if (textBox5.Text.Trim().Length > 0 && textBox5.Text.Trim().Length != 8)

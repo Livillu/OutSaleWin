@@ -1,34 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Csharp\\OutSaleWin\\",
+  "WorkspaceRootPath": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|c:\\users\\alice\\source\\repos\\outsalewin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|c:\\users\\alice\\source\\repos\\outsalewin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|c:\\users\\alice\\source\\repos\\outsalewin\\wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\dialogform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\dialogform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\dialogform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\dialogform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|C:\\Users\\alice\\source\\repos\\OutSaleWin\\wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\fshowlost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +50,125 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
-              "RelativeDocumentMoniker": "WTools\\Form1.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
-              "RelativeToolTip": "WTools\\Form1.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAMwDEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T03:07:33.733Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
-              "RelativeDocumentMoniker": "WTools\\Form1.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\Form1.cs [\u8A2D\u8A08]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T03:07:29.318Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "invoice.cs",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeDocumentMoniker": "WTools\\invoice.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeToolTip": "WTools\\invoice.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAEwFgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T01:53:55.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "invoice.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeDocumentMoniker": "WTools\\invoice.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\invoice.cs [\u8A2D\u8A08]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T01:54:13.847Z",
-              "EditorCaption": " [\u8A2D\u8A08]"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UserClientDesk.cs",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
               "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs*",
-              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs*",
-              "ViewState": "AgIAAC0BAAAAAAAAAAASwEUBAAAsAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
+              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs",
+              "ViewState": "AgIAAGYBAAAAAAAAAAApwFsBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T00:43:21.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FShowLost.cs",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs",
-              "RelativeDocumentMoniker": "WTools\\PostDesk\\FShowLost.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs",
-              "RelativeToolTip": "WTools\\PostDesk\\FShowLost.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T01:09:09.698Z",
+              "WhenOpened": "2025-12-12T03:26:08.567Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "UserClientDesk.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
               "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]*",
-              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]*",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T00:43:11.158Z",
+              "WhenOpened": "2025-12-12T03:25:54.323Z",
               "EditorCaption": " [\u8A2D\u8A08]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditProduct.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\EditProduct.cs",
+              "RelativeDocumentMoniker": "WTools\\EditProduct.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\EditProduct.cs",
+              "RelativeToolTip": "WTools\\EditProduct.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAUwBwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T03:14:47.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditProduct.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\EditProduct.cs",
+              "RelativeDocumentMoniker": "WTools\\EditProduct.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\EditProduct.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\EditProduct.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T03:15:25.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "dialogform.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\dialogform.cs",
+              "RelativeDocumentMoniker": "WTools\\dialogform.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\dialogform.cs",
+              "RelativeToolTip": "WTools\\dialogform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T02:34:19.857Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "dialogform.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\dialogform.cs",
+              "RelativeDocumentMoniker": "WTools\\dialogform.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\dialogform.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\dialogform.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T02:34:25.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\Form1.cs",
+              "RelativeDocumentMoniker": "WTools\\Form1.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\Form1.cs",
+              "RelativeToolTip": "WTools\\Form1.cs",
+              "ViewState": "AgIAAO4BAAAAAAAAAAAlwPsBAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T02:33:55.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form1.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\Form1.cs",
+              "RelativeDocumentMoniker": "WTools\\Form1.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\Form1.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\Form1.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T02:33:47.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FShowLost.cs",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs",
+              "RelativeDocumentMoniker": "WTools\\PostDesk\\FShowLost.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs",
+              "RelativeToolTip": "WTools\\PostDesk\\FShowLost.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAlwCUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T01:09:09.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FShowLost.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs",
+              "RelativeDocumentMoniker": "WTools\\PostDesk\\FShowLost.cs",
+              "ToolTip": "C:\\Users\\alice\\source\\repos\\OutSaleWin\\WTools\\PostDesk\\FShowLost.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "WTools\\PostDesk\\FShowLost.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T12:54:36.174Z"
             }
           ]
         }
