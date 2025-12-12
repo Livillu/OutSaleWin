@@ -117,6 +117,7 @@ namespace WTools
         private void button3_Click(object sender, EventArgs e)
         {
             DataRow row = null;
+            row = DT.NewRow();
             EditProduct editProduct = new EditProduct(row);
             editProduct.Text = "新增商品";
             DialogResult dr = editProduct.ShowDialog();

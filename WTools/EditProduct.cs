@@ -77,7 +77,7 @@ namespace WTools
             combbox1.Items.Clear();
             combbox1.DataSource = dt;
             combbox1.DisplayMember = "SupName";
-            if (DR != null)
+            if (DR != null && DR[0].ToString() !="")
             {
                 textBox1.Text= DR[0].ToString();
                 textBox1.ReadOnly= true;
