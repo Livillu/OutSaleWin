@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="256040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EnvDTE.dll" size="255888">
       <assemblyIdentity name="EnvDTE" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zLQERJlNBFUpJOCVeOC5nKjaAo5PXaset1/c9S/SE0w=</dsig:DigestValue>
+        <dsig:DigestValue>KzkictevMW2f3nPh7x4zucJbG44tusMtmKvMnh1fmYo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -715,14 +715,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="25592">
       <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1s35YcbScS/hlYgV5Rowlg15//Hpd4i3dBYn26ly6Pc=</dsig:DigestValue>
+        <dsig:DigestValue>Ijj0G0vkNssmmpH6rOlSVh8hpqkLH8j+cLfEyQNUE0I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -799,14 +799,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTools.exe" size="731056">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTools.exe" size="733616">
       <assemblyIdentity name="WTools" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iQlsNMOJxLh/5XcDhqSKExryZcbZPh8hA20YZY8+Rrk=</dsig:DigestValue>
+        <dsig:DigestValue>EROv+1nvRgSLHiFdAA1DWUlBG7v8hvBPPHEWHPHJhnY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

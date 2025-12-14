@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WTools
@@ -34,7 +28,7 @@ namespace WTools
             if(DT !=null && DT.Rows.Count > 0) DT.Rows.Clear();
             string sqlparam = "";
             if (textBox2.Text != "") sqlparam += " WHERE MB001 LIKE '%" + textBox2.Text + "%' OR  MB002 LIKE '%" + textBox2.Text + "%'";                      
-            string sqlstring = "SELECT [MB001],[MB002],[MB003],[MB051],[MB064],[MB004],[GpSno],[SupId],(SELECT TOP (1) [SupName] FROM [Support] where [SupId]=a.SupId) [SupName] FROM [Products] a " + sqlparam;
+            string sqlstring = "SELECT [MB001],[MB002],[MB003],[MB051],[MB064],[MB004],[GpSno],[SupId],(SELECT TOP (1) [SupName] FROM [Support] where [SupId]=a.SupId) [SupName],[CostPrice] FROM [Products] a " + sqlparam;
 
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd = new SqlCommand(sqlstring, conn);
@@ -116,8 +110,7 @@ namespace WTools
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DataRow row = null;
-            row = DT.NewRow();
+            DataRow row = DT.NewRow();
             EditProduct editProduct = new EditProduct(row);
             editProduct.Text = "新增商品";
             DialogResult dr = editProduct.ShowDialog();
@@ -126,5 +119,75 @@ namespace WTools
                 row = editProduct.ResultProduct();
             }
         }
-    }
+        private void UserControl4_Load(object sender, EventArgs e)
+        {
+            DataColumn dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "MB001";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "MB002";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = true;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "MB003";
+            dataColumn1.DefaultValue = "";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = true;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "MB004";
+            dataColumn1.DefaultValue = "";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "MB051";
+            dataColumn1.DefaultValue = 0;
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.DefaultValue = 0;
+            dataColumn1.ColumnName = "MB064";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = true;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "GpSno";
+            dataColumn1.DefaultValue = "";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = true;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "SupName";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = true;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "SupId";
+            dataColumn1.DefaultValue = "";
+            DT.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "CostPrice";
+            dataColumn1.DefaultValue = 0;
+            DT.Columns.Add(dataColumn1);
+
+        }
+}
 }

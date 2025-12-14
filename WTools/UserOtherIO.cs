@@ -88,6 +88,7 @@ namespace WTools
             tbQuty.Text = "";
             tbPrice.Text = "";
             tbMB001.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
             prgstatus(0);
         }
 
@@ -116,12 +117,12 @@ namespace WTools
             string sql;
             if (Convert.ToInt16(cmd1.ExecuteScalar()) > 0)
             {
-                sql = $"UPDATE [OtherCost] SET [MB001] ='{tbMB001.Text}' ,[Quty] ='{tbQuty.Value}' ,[Price] ='{tbPrice.Value}' ,[InOut] ='{tbInOut}' ,[Mark] ='{tbMark.Text}' WHERE [Sno] = '{tbSno.Text}'";
+                sql = $"UPDATE [OtherCost] SET [MB001] ='{tbMB001.Text}' ,[Quty] ='{tbQuty.Value}' ,[Price] ='{tbPrice.Value}' ,[InOut] ='{tbInOut}' ,[Mark] ='{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}' WHERE [Sno] = '{tbSno.Text}'";
                 cmd1.CommandText = sql;
             }
             else
             {
-                sql = $"INSERT INTO [OtherCost]([Sno],[MB001],[Quty],[Price],[InOut],[Mark]) VALUES('{tbSno.Text}','{tbMB001.Text}',{tbQuty.Value},{tbPrice.Value},{tbInOut},'{tbMark.Text}')";
+                sql = $"INSERT INTO [OtherCost]([Sno],[MB001],[Quty],[Price],[InOut],[Mark],[Cdate]) VALUES('{tbSno.Text}','{tbMB001.Text}',{tbQuty.Value},{tbPrice.Value},{tbInOut},'{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}')";
                 cmd1.CommandText = sql;
             }
             cmd1.ExecuteNonQuery();
@@ -138,6 +139,7 @@ namespace WTools
             tbQuty.Text = dr["Quty"].ToString();
             tbPrice.Text = dr["Price"].ToString();
             tbMark.Text = dr["Mark"].ToString();
+            dateTimePicker1.Value = Convert.ToDateTime(dr["Cdate"]);
             if (Convert.ToInt16(dr["InOut"])>0 )radioButton2.Checked=true;
             else radioButton1.Checked = true;
         }

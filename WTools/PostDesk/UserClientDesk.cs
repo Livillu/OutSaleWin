@@ -228,12 +228,21 @@ namespace WTools.PostDesk
                     SqlTransaction sqlTransaction = null;
                     sqlTransaction = conn1.BeginTransaction();
                     cmd1.Transaction = sqlTransaction;
+                    int trtype = 0;
+                    if (radioButton1.Checked)
+                    {
+                        trtype = 0;
+                    }
+                    if (radioButton2.Checked)
+                    {
+                        trtype = 1;
+                    }
                     try
                     {
                         foreach (DataRow item in MainForm.DTsale.Rows)
                         {
                             //銷貨明細檔
-                            cmd1.CommandText = "INSERT INTO [TSales] ([Sno],[MB001],[Quty],[Price],[Tprice],[Gp]) VALUES('" + textBox1.Text.Trim() + "','" + item[4] + "'," + item[2].ToString() + "," + item[1].ToString() + "," + item[3].ToString() + "," + item[5].ToString() + ");";
+                            cmd1.CommandText = "INSERT INTO [TSales] ([Sno],[MB001],[Quty],[Price],[Tprice],[Gp]) VALUES('" + textBox1.Text.Trim() + "','" + item[4] + "'," + item[2].ToString() + "," + item[1].ToString() + "," + item[3].ToString() + "," + item[5].ToString()+ ");";
                             //交易進出紀錄檔
                             cmd1.CommandText += "INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) values('" + textBox1.Text.Trim() + "','" + item[4] + "'," + item[2].ToString() + ",0);";
                             //產品檔
@@ -255,7 +264,7 @@ namespace WTools.PostDesk
                             }
                         }
                         //銷貨主檔
-                        cmd1.CommandText = "INSERT INTO [MSales] ([Sno],[Price],[Scode],[Discount]) VALUES('" + textBox1.Text.Trim() + "'," + textBox4.Text.Trim() + ",'" + textBox5.Text.Trim() + "'," + textBox6.Text.Trim() + ")";
+                        cmd1.CommandText = "INSERT INTO [MSales] ([Sno],[Price],[Scode],[Discount],[TrType]) VALUES('" + textBox1.Text.Trim() + "'," + textBox4.Text.Trim() + ",'" + textBox5.Text.Trim() + "'," + textBox6.Text.Trim() + "," + trtype + ")";
                         cmd1.ExecuteNonQuery();
                         //變更當前發票檔
                         cmd1.CommandText = $"UPDATE [OtherConfigs] SET [F4]='{textBox1.Text.Substring(0, 2) + (Convert.ToInt32(textBox1.Text.Substring(2, 8)) + 1).ToString()}' where [FSno]=1";
@@ -374,7 +383,15 @@ namespace WTools.PostDesk
                         SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
                         SqlCommand cmd1 = new SqlCommand("SELECT [F4] FROM [OtherConfigs] where [FSno]=1", conn1);
                         cmd1.Connection.Open();
-                        textBox1.Text = cmd1.ExecuteScalar().ToString();
+                        try
+                        {
+                            textBox1.Text = cmd1.ExecuteScalar().ToString();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("發票設定異常!!!!");
+                            return;
+                        }
                         //string NO2=NO1.Substring(6,4);
                     }
                     dr2[2] = 1;
@@ -454,6 +471,7 @@ namespace WTools.PostDesk
             TmpButton[0] = button11;
             TmpButton[1] = button22;
             TmpButton[2] = button23;
+            Discounts = new DataTable();
             for (int i = 0; i < 3; i++)
             {
                 if (MainForm.TmpsTable[i] == null || MainForm.TmpsTable[i].Rows.Count == 0) TmpButton[i].BackColor = Color.LightGreen;
@@ -475,8 +493,7 @@ namespace WTools.PostDesk
                 cmd.CommandText = "SELECT [GpSno],[Quty],[Price],[SubMoney],[SubDiscount],[GpName] FROM [DiscountRule] where GETDATE() between [StDate] and [EdDate]";
                 sdr = cmd.ExecuteReader();
                 if (sdr.HasRows)
-                {
-                    Discounts = new DataTable();
+                { 
                     Discounts.Load(sdr);
                     sdr.Close();
                 }

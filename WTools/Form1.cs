@@ -60,21 +60,18 @@ namespace WTools
             dataColumn1.AllowDBNull = false;
             dataColumn1.DataType = typeof(string);
             dataColumn1.ColumnName = "MB002";
-            dataColumn1.AllowDBNull = false;
             MainForm.PDT.Columns.Add(dataColumn1);
 
             dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
+            dataColumn1.AllowDBNull = true;
             dataColumn1.DataType = typeof(string);
             dataColumn1.ColumnName = "MB004";
-            dataColumn1.AllowDBNull = false;
             MainForm.PDT.Columns.Add(dataColumn1);
 
             dataColumn1 = new DataColumn();
             dataColumn1.AllowDBNull = false;
             dataColumn1.DataType = typeof(int);
             dataColumn1.ColumnName = "MB064";
-            dataColumn1.ReadOnly = false;
             MainForm.PDT.Columns.Add(dataColumn1);
 
             dataColumn1 = new DataColumn();
@@ -87,14 +84,12 @@ namespace WTools
             dataColumn1.AllowDBNull = false;
             dataColumn1.DataType = typeof(int);
             dataColumn1.ColumnName = "Gp";
-            dataColumn1.AllowDBNull = false;
             MainForm.PDT.Columns.Add(dataColumn1);
 
             dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
+            dataColumn1.AllowDBNull = true;
             dataColumn1.DataType = typeof(string);
             dataColumn1.ColumnName = "GpSno";
-            dataColumn1.AllowDBNull = true;
             MainForm.PDT.Columns.Add(dataColumn1);
 
             //sale
@@ -129,21 +124,18 @@ namespace WTools
             dataColumn.AllowDBNull = false;
             dataColumn.DataType = typeof(string);
             dataColumn.ColumnName = "MB001";
-            dataColumn.AllowDBNull = false;
             MainForm.DTsale.Columns.Add(dataColumn);
 
             dataColumn = new DataColumn();
             dataColumn.AllowDBNull = false;
             dataColumn.DataType = typeof(int);
             dataColumn.ColumnName = "Gp";
-            dataColumn.AllowDBNull = false;
             MainForm.DTsale.Columns.Add(dataColumn);
 
             dataColumn = new DataColumn();
-            dataColumn.AllowDBNull = false;
+            dataColumn.AllowDBNull = true;
             dataColumn.DataType = typeof(string);
             dataColumn.ColumnName = "GpSno";
-            dataColumn.AllowDBNull = true;
             MainForm.DTsale.Columns.Add(dataColumn);
             button2.PerformClick();
         }
