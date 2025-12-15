@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace WTools
     public partial class UserOtherIO : UserControl
     {
         DataTable TTD;
-        int tbInOut;
+        int tbInOut,Sid=0;
         public UserOtherIO()
         {
             InitializeComponent();
@@ -71,7 +72,7 @@ namespace WTools
             SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd1 = new SqlCommand("", conn1);
             cmd1.Connection.Open();
-            string sql = "SELECT [Sno],[MB001],[Quty],[Price],[InOut],[Cdate],[Mark],[Quty]*[Price]*[InOut] Total FROM [OtherCost] where 1=1";
+            string sql = "SELECT [Id],[Sno],[MB001],[Quty],[Price],[InOut],[Cdate],[Mark],[Quty]*[Price]*[InOut] Total FROM [OtherCost] where 1=1";
             if (textBox10.Text.Trim() != "") sql += $" and MB001 like '%{textBox10.Text}%'";
             if (textBox11.Text.Trim() != "") sql += $" and Sno like '%{textBox11.Text}%'";
             cmd1.CommandText = sql;
@@ -82,11 +83,12 @@ namespace WTools
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Sid = 0;
             Setbutton("A");
             tbMark.Text = "";
             tbSno.Text = "";
-            tbQuty.Text = "";
-            tbPrice.Text = "";
+            tbQuty.Value = 0;
+            tbPrice.Value = 0;
             tbMB001.Text = "";
             dateTimePicker1.Value = DateTime.Now;
             prgstatus(0);
@@ -94,7 +96,7 @@ namespace WTools
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (tbSno.Text.Trim() != "")
+            if (Sid >0)
             {
                 Setbutton("A");
                 prgstatus(1);
@@ -112,17 +114,17 @@ namespace WTools
             if (radioButton1.Checked) tbInOut = -1;
             else tbInOut = 1;
             SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
-            SqlCommand cmd1 = new SqlCommand($"SELECT count(*) FROM [OtherCost] where [Sno]='{tbSno.Text.Trim()}'", conn1);
+            SqlCommand cmd1 = new SqlCommand($"SELECT count(*) FROM [OtherCost] where [Id]={Sid}", conn1);
             cmd1.Connection.Open();
             string sql;
             if (Convert.ToInt16(cmd1.ExecuteScalar()) > 0)
             {
-                sql = $"UPDATE [OtherCost] SET [MB001] ='{tbMB001.Text}' ,[Quty] ='{tbQuty.Value}' ,[Price] ='{tbPrice.Value}' ,[InOut] ='{tbInOut}' ,[Mark] ='{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}' WHERE [Sno] = '{tbSno.Text}'";
+                sql = $"UPDATE [OtherCost] SET [Sno] = '{tbSno.Text}',[MB001] ='{tbMB001.Text}' ,[Quty] ='{tbQuty.Value}' ,[Price] ='{tbPrice.Value}' ,[InOut] ='{tbInOut}' ,[Mark] ='{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}' WHERE [Id] = {Sid}";
                 cmd1.CommandText = sql;
             }
             else
             {
-                sql = $"INSERT INTO [OtherCost]([Sno],[MB001],[Quty],[Price],[InOut],[Mark],[Cdate]) VALUES('{tbSno.Text}','{tbMB001.Text}',{tbQuty.Value},{tbPrice.Value},{tbInOut},'{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}')";
+                sql = $"INSERT INTO [OtherCost]([Sno],[MB001],[Quty],[Price],[InOut],[Mark],[Cdate]) VALUES('{tbSno.Text}','{tbMB001.Text}',{tbQuty.Value},{tbPrice.Value},{tbInOut},'{tbMark.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}')";
                 cmd1.CommandText = sql;
             }
             cmd1.ExecuteNonQuery();
@@ -134,6 +136,7 @@ namespace WTools
         {
             DataRow dr = TTD.NewRow();
             dr = TTD.Rows[e.RowIndex];
+            Sid=Convert.ToInt32(dr["Id"]);
             tbSno.Text = dr["Sno"].ToString();
             tbMB001.Text = dr["MB001"].ToString();
             tbQuty.Text = dr["Quty"].ToString();

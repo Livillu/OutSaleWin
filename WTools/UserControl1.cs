@@ -35,12 +35,14 @@ namespace WTools
                 if (dateTimePicker2.Text != "" && dateTimePicker1.Text != "") sqlparam += " AND Cdate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + " 23:59:59'";
                 if (checkBox1.Checked && !checkBox2.Checked) sqlparam += " AND Isok='1'";
                 if (checkBox2.Checked && !checkBox1.Checked) sqlparam += " AND Isok='0'";
+                if (checkMoney.Checked && !checkLine.Checked) sqlparam += " AND TrType=0";
+                if (checkLine.Checked && !checkMoney.Checked) sqlparam += " AND TrType=1";
             }
             if (sqlparam == "") sqlparam = " WHERE 1<>1";
             else sqlparam = " WHERE 1=1"+ sqlparam;
 
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
-            SqlCommand cmd = new SqlCommand("SELECT [Sno] 發票編號,[Price] 總金額,[Discount] 折扣金額,[Price] -[Discount] 實收金額,FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期,case Isok when '1' then '銷' else '退' end 狀態 FROM [MSales]" + sqlparam, conn);
+            SqlCommand cmd = new SqlCommand("SELECT [Sno] 發票編號,[Price] 總金額,[Discount] 折扣金額,[Price] -[Discount] 實收金額,FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期,case Isok when '1' then '銷' else '退' end 狀態 ,case [TrType] when '1' then 'Line Pay' else '現金' end 付款類型 FROM [MSales]" + sqlparam+ " order by [Sno]", conn);
             cmd.Connection.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
             dt.Load(rdr);
@@ -76,6 +78,7 @@ namespace WTools
                         ws.Cells["B1"].Value = "金額";
                         ws.Cells["C1"].Value = "日期";
                         ws.Cells["D1"].Value = "狀態";
+                        ws.Cells["E1"].Value = "付款類型";
                         ws.Cells["A2"].LoadFromDataTable(dt);
                         // 儲存 Excel
                         var file = new FileInfo(saveFileDialog1.FileName); // 檔案路徑

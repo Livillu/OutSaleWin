@@ -1,46 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\vscode\\OutSaleWin\\",
+  "WorkspaceRootPath": "D:\\Csharp\\OutSaleWin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\vscode\\outsalewin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\usercontrol4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\usercontrol4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\usercontrol4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\usercontrol4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\editproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\vscode\\OutSaleWin\\wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\userotherio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,130 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EditProduct.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\EditProduct.cs",
-              "RelativeDocumentMoniker": "WTools\\EditProduct.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\EditProduct.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\EditProduct.cs [\u8A2D\u8A08]",
+              "DocumentIndex": 0,
+              "Title": "UserControl1.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\UserControl1.cs",
+              "RelativeDocumentMoniker": "WTools\\UserControl1.cs",
+              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\UserControl1.cs*",
+              "RelativeToolTip": "WTools\\UserControl1.cs*",
+              "ViewState": "AgIAADoAAAAAAAAAAAD4v08AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:07:00.099Z",
-              "EditorCaption": " [\u8A2D\u8A08]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserControl4.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\UserControl4.cs",
-              "RelativeDocumentMoniker": "WTools\\UserControl4.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\UserControl4.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\UserControl4.cs [\u8A2D\u8A08]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:06:33.831Z",
-              "EditorCaption": " [\u8A2D\u8A08]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserControl4.cs",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\UserControl4.cs",
-              "RelativeDocumentMoniker": "WTools\\UserControl4.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\UserControl4.cs",
-              "RelativeToolTip": "WTools\\UserControl4.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAAKIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:05:17.144Z",
+              "WhenOpened": "2025-12-15T02:35:38.096Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserControl1.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\UserControl1.cs",
+              "RelativeDocumentMoniker": "WTools\\UserControl1.cs",
+              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\UserControl1.cs [\u8A2D\u8A08]*",
+              "RelativeToolTip": "WTools\\UserControl1.cs [\u8A2D\u8A08]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T02:35:42.066Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\Form1.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
               "RelativeDocumentMoniker": "WTools\\Form1.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\Form1.cs",
+              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
               "RelativeToolTip": "WTools\\Form1.cs",
-              "ViewState": "AgIAAAcCAAAAAAAAAAAIwBICAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAIAwwBoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-13T23:06:18.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserClientDesk.cs",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
-              "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs*",
-              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs*",
-              "ViewState": "AgIAAPkAAAAAAAAAAAAkwAgBAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-12T03:26:08.567Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Form1.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\Form1.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs",
               "RelativeDocumentMoniker": "WTools\\Form1.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\Form1.cs [\u8A2D\u8A08]",
+              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\Form1.cs [\u8A2D\u8A08]",
               "RelativeToolTip": "WTools\\Form1.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-13T23:06:15.559Z",
               "EditorCaption": " [\u8A2D\u8A08]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserClientDesk.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
-              "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]*",
-              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs [\u8A2D\u8A08]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T03:04:01.015Z",
-              "EditorCaption": " [\u8A2D\u8A08]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EditProduct.cs",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\EditProduct.cs",
-              "RelativeDocumentMoniker": "WTools\\EditProduct.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\EditProduct.cs",
-              "RelativeToolTip": "WTools\\EditProduct.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAUwEQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:06:55.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserOtherIO.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\UserOtherIO.cs",
-              "RelativeDocumentMoniker": "WTools\\UserOtherIO.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\UserOtherIO.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\UserOtherIO.cs [\u8A2D\u8A08]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:22:11.958Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserOtherIO.cs",
-              "DocumentMoniker": "D:\\vscode\\OutSaleWin\\WTools\\UserOtherIO.cs",
-              "RelativeDocumentMoniker": "WTools\\UserOtherIO.cs",
-              "ToolTip": "D:\\vscode\\OutSaleWin\\WTools\\UserOtherIO.cs",
-              "RelativeToolTip": "WTools\\UserOtherIO.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAQwIsAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T23:22:02.69Z"
             }
           ]
         }

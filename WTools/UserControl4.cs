@@ -14,15 +14,6 @@ namespace WTools
             InitializeComponent();
             dataGridView1.DataSource = DT;
         }
-        public class EProduct
-        {
-            public string MB001 { get; set; }
-            public string MB002 { get; set; }
-            public string MB003 { get; set; }
-            public string MB004 { get; set; }
-            public decimal MB051 { get; set; } = 0;
-            public int MB064 { get; set; }  
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             if(DT !=null && DT.Rows.Count > 0) DT.Rows.Clear();
@@ -68,29 +59,27 @@ namespace WTools
                 sqlTransaction = conn1.BeginTransaction();
                 cmd1.Transaction = sqlTransaction;
                 
-                for (int j1 = 0;j1< listDel.Count; j1 ++)
+                for (int j1 = listDel.Count; j1>0; j1--)
                 {
-                    try
-                    {
-                        cmd1.CommandText = "DELETE FROM [Products] WHERE [MB001]='" + DT.Rows[j1][0].ToString() +"'";
-                        cmd1.ExecuteNonQuery();
-                        sqlTransaction.Commit();
-                    }
-                    catch
-                    {
-                        if (sqlTransaction != null)
-                        {
-                            isok=false;
-                            sqlTransaction.Rollback();
-                            MessageBox.Show("刪除失敗!!!!");
-                        }
-                    }
+                    int K1 = listDel[j1 - 1];
+                    cmd1.CommandText = "DELETE FROM [Products] WHERE [MB001]='" + DT.Rows[K1]["MB001"].ToString() + "'";
+                    cmd1.ExecuteNonQuery();
+                }
+                try
+                {
+                    sqlTransaction.Commit();
+                }
+                catch
+                {
+                    isok = false;
+                    sqlTransaction.Rollback();
+                    MessageBox.Show("刪除失敗!!!!");
                 }
                 if (isok)
                 {
-                    for (int j = listDel.Count - 1; j > -1; j--)
+                    for (int j = listDel.Count; j > 0; j--)
                     {
-                        DT.Rows.RemoveAt(listDel[j]);
+                        DT.Rows.RemoveAt(listDel[j-1]);
                     }
                 }
             }
@@ -117,7 +106,9 @@ namespace WTools
             if (dr == DialogResult.OK)
             {
                 row = editProduct.ResultProduct();
+                DT.Rows.Add(row);
             }
+            
         }
         private void UserControl4_Load(object sender, EventArgs e)
         {

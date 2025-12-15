@@ -35,18 +35,7 @@ namespace WTools
                 {
                     cmd1.CommandText = $"INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) VALUES('{MainForm.UserId}','{textBox1.Text}',{textBox6.Text},1)";
                     cmd1.ExecuteNonQuery();
-                }
-                /*
-                 DR[0]= textBox1.Text;//MB001
-                DR[1]= textBox2.Text;//MB002
-                DR[2] = textBox3.Text; //MB003   
-                DR[3] = textBox4.Text;//MB004
-                DR[4] = textBox5.Value;//MB051
-                DR[5] = textBox6.Value; //MB064
-                DR[6] = textBox8.Text.Trim();//GpSno
-                DR[8] = SupId;//SupId
-                DR[9] = textBox7.Value;//CostPrice
-                 */
+                }                
 
             }//修改
             else 
@@ -66,6 +55,15 @@ namespace WTools
                     }
                 }
             }
+            DR[0]= textBox1.Text;//MB001
+            DR[1]= textBox2.Text;//MB002
+            DR[2] = textBox3.Text; //MB003   
+            DR[3] = textBox4.Text;//MB004
+            DR[4] = textBox5.Value;//MB051
+            DR[5] = textBox6.Value; //MB064
+            DR[6] = textBox8.Text.Trim();//GpSno
+            DR[8] = SupId;//SupId
+            DR[9] = textBox7.Value;//CostPrice
         }
 
         private void EditProduct_Load(object sender, EventArgs e)
@@ -81,17 +79,6 @@ namespace WTools
             combbox1.DisplayMember = "SupName";
             if (DR[0].ToString() !="")
             {
-                /*
-                 DR[0]= textBox1.Text;//MB001
-                DR[1]= textBox2.Text;//MB002
-                DR[2] = textBox3.Text; //MB003   
-                DR[3] = textBox4.Text;//MB004
-                DR[4] = textBox5.Value;//MB051
-                DR[5] = textBox6.Value; //MB064
-                DR[6] = textBox8.Text.Trim();//GpSno
-                DR[8] = SupId;//SupId
-                DR[9] = textBox7.Value;//CostPrice
-                 */
                 textBox1.Text= DR[0].ToString();
                 textBox1.ReadOnly= true;
                 textBox2.Text= DR[1].ToString();
@@ -110,21 +97,6 @@ namespace WTools
                 textBox2.ReadOnly = false;
                 combbox1.Enabled = true;
             }
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

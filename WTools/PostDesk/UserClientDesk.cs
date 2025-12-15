@@ -194,8 +194,8 @@ namespace WTools.PostDesk
             {
                 var tmp = Convert.ToInt32(numericUpDown1.Text) - Convert.ToInt32(textBox7.Text);
                 textBox3.Text = tmp.ToString();
-                if (tmp < 0) textBox3.ForeColor = System.Drawing.Color.Red;
-                else textBox3.ForeColor = System.Drawing.Color.DeepSkyBlue;
+                if (tmp < 0) textBox3.ForeColor = Color.Red;
+                else textBox3.ForeColor = Color.DeepSkyBlue;
                 if (tmp >= 0 && textBox1.Text.Trim().Length == 10) button5.Enabled = true;
                 else button5.Enabled = false;
             }
@@ -204,6 +204,7 @@ namespace WTools.PostDesk
         private void button5_Click(object sender, EventArgs e)
         {
             bool start = true;
+            //折扣檢查
             if (CheckOrder() > 0)
             {
                 FShowLost showLost = new FShowLost(CheckDt);
@@ -211,6 +212,7 @@ namespace WTools.PostDesk
                 start=showLost.GetResult();
 
             }
+            //是否繼續結帳
             if (start == false) return;
             if (Convert.ToInt32(textBox3.Text) > -1 && textBox1.Text.Trim().Length == 10)
             {
