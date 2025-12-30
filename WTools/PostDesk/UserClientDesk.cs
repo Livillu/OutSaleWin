@@ -1,18 +1,23 @@
-﻿using ScottPlot.Hatches;
+﻿using QRCoder;
+using ScottPlot.Hatches;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-
 using System.Windows.Forms;
-using static WTools.InvoicePrint;
+using WTools.MigPrint;
+using WTools.SaleOrder;
+using WTools.warehouse;
+using static WTools.MigPrint.MIG4.F0401;
+using static WTools.SaleOrder.InvoicePrint;
 
 namespace WTools.PostDesk
 {
     public partial class UserClientDesk : UserControl
     {
-        public static DataTable Discounts,CheckDt;
+        public static DataTable Discounts,CheckDt,RealDiscount;
         Button[] TmpButton = new Button[3];
         public UserClientDesk()
         {
@@ -41,37 +46,18 @@ namespace WTools.PostDesk
         {
             invoice inv = new invoice();
             inv.ShowDialog();
-            //DialogResult result = inv.ShowDialog();
-            //if (result == DialogResult.OK)
-            //{
             List<string> msg = inv.GetMsg();
-                if (msg.Count > 0)
-                {
-                    invoiceClear();
-                    foreach (string s in msg)
-                    {
-                        string[] tmp = s.Split(':');
-                        if (tmp.Length == 2)
-                        {
-                            for (int i = 0; i < MainForm.PDT.Rows.Count; i++)
-                            {
-                                if (MainForm.PDT.Rows[i]["MB001"].ToString().Trim() == tmp[0])
-                                {
-                                    MainForm.PDT.Rows[i]["MB064"] = Convert.ToInt32(MainForm.PDT.Rows[i]["MB064"]) - Convert.ToInt32(tmp[1]);
-                                    break;
-                                }
-                            }
-                        }
-
-                    }
-                }
-            //}
+            if (msg.Count > 0)
+            {
+                invoiceClear();
+            }
         }
        
         private int ItemsDiscount(DataTable dt)
         {
             int discount = 0;
             listBox1.Items.Clear();
+            RealDiscount.Rows.Clear();
             foreach (DataRow dr in Discounts.Rows)
             {
                 string gpid = dr["GpSno"].ToString();
@@ -143,6 +129,13 @@ namespace WTools.PostDesk
                 }
                 if (tmpdiscount > 0)
                 {
+                    DataRow rdr=RealDiscount.NewRow();
+                    rdr["ID"] = gpid;//折扣代碼
+                    rdr["SubMoney"] = dr["SubMoney"];//折扣金額
+                    rdr["Quty"] = Convert.ToInt16(dr[1]);//折扣數量
+                    rdr["Counts"] = counts;//則扣組數
+                    rdr["RelCounts"] = Convert.ToInt16(dr[1])* counts;//需處理筆數，每處理一筆減1直到歸零
+                    RealDiscount.Rows.Add(rdr);
                     listBox1.Items.Add($"{ptname} ({GpName})");
                     if (Convert.ToInt16(dr[1]) > 0 && Convert.ToInt16(dr[2]) == 0)
                     {
@@ -203,14 +196,13 @@ namespace WTools.PostDesk
 
         private void button5_Click(object sender, EventArgs e)
         {
-            bool start = true;
+            bool start = true,isok=false;
             //折扣檢查
             if (CheckOrder() > 0)
             {
                 FShowLost showLost = new FShowLost(CheckDt);
                 showLost.ShowDialog(this);
                 start=showLost.GetResult();
-
             }
             //是否繼續結帳
             if (start == false) return;
@@ -224,6 +216,7 @@ namespace WTools.PostDesk
                 //存檔
                 if (MainForm.DTsale.Rows.Count > 0)
                 {
+                    List<SaleOrder.InvoicePrint.Product> products = new List<SaleOrder.InvoicePrint.Product>();
                     SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
                     SqlCommand cmd1 = new SqlCommand("", conn1);
                     cmd1.Connection.Open();
@@ -239,42 +232,47 @@ namespace WTools.PostDesk
                     {
                         trtype = 1;
                     }
-                    try
+                    foreach (DataRow item in MainForm.DTsale.Rows)
                     {
-                        foreach (DataRow item in MainForm.DTsale.Rows)
+                        //銷貨明細檔
+                        //折扣金額
+                        decimal tmpdiscount = 0;
+                        if (RealDiscount != null && RealDiscount.Rows.Count > 0)
                         {
-                            //銷貨明細檔
-                            cmd1.CommandText = "INSERT INTO [TSales] ([Sno],[MB001],[Quty],[Price],[Tprice],[Gp]) VALUES('" + textBox1.Text.Trim() + "','" + item[4] + "'," + item[2].ToString() + "," + item[1].ToString() + "," + item[3].ToString() + "," + item[5].ToString()+ ");";
-                            //交易進出紀錄檔
-                            cmd1.CommandText += "INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) values('" + textBox1.Text.Trim() + "','" + item[4] + "'," + item[2].ToString() + ",0);";
-                            //產品檔
-                            cmd1.CommandText += "  UPDATE [Products] set MB064=MB064-" + item[2].ToString() + " where MB001='" + item[4] + "';";
-
-                            if (cmd1.ExecuteNonQuery() > 0)
+                            for (int k = 0; k < RealDiscount.Rows.Count; k++)
                             {
-                                //變更產品暫存檔數量
-                                for (int i = 0; i < MainForm.PDT.Rows.Count; i++)
+                                if (RealDiscount.Rows[k]["ID"].ToString() == item["GpSno"].ToString())
                                 {
-                                    if (MainForm.PDT.Rows[i]["MB001"] == item[4])
+                                    //折扣金額
+                                    if (Convert.ToInt16(RealDiscount.Rows[k]["RelCounts"]) - Convert.ToInt16(item["MB064"]) > -1)
                                     {
-                                        var t1 = MainForm.PDT.Rows[i]["MB064"];
-                                        var t2 = item[2];
-                                        MainForm.PDT.Rows[i]["MB064"] = Convert.ToInt32(MainForm.PDT.Rows[i]["MB064"]) - Convert.ToInt32(item[2]);
-                                        break;
+                                        for (int j = 0; j < Convert.ToInt16(item["MB064"]); j++)
+                                        {
+                                            tmpdiscount += Convert.ToDecimal(RealDiscount.Rows[k]["SubMoney"]) / Convert.ToDecimal(RealDiscount.Rows[k]["Quty"]);
+                                            RealDiscount.Rows[k]["RelCounts"] = Convert.ToInt16(RealDiscount.Rows[k]["RelCounts"]) - 1;
+                                        }
                                     }
                                 }
                             }
                         }
-                        //銷貨主檔
-                        cmd1.CommandText = "INSERT INTO [MSales] ([Sno],[Price],[Scode],[Discount],[TrType]) VALUES('" + textBox1.Text.Trim() + "'," + textBox4.Text.Trim() + ",'" + textBox5.Text.Trim() + "'," + textBox6.Text.Trim() + "," + trtype + ")";
+                        //銷貨紀錄檔
+                        cmd1.CommandText = $"INSERT INTO [TSales] ([Sno],[MB001],[Quty],[Price],[Tprice],[Gp],[Discount]) VALUES('{textBox1.Text.Trim()}','{item[4]}',{item[2]},{item[1]},{item[3]},{item[5]},{tmpdiscount});";
+                        //交易進出紀錄檔
+                        cmd1.CommandText += $"INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) values('{textBox1.Text.Trim()}','{item[4]}',{item[2]},0);";
+                        //產品庫存檔
+                        cmd1.CommandText += $"UPDATE [Products] set MB064=MB064-{item[2]} where MB001='{item[4]}';";
                         cmd1.ExecuteNonQuery();
-                        //變更當前發票檔
-                        cmd1.CommandText = $"UPDATE [OtherConfigs] SET [F4]='{textBox1.Text.Substring(0, 2) + (Convert.ToInt32(textBox1.Text.Substring(2, 8)) + 1).ToString()}' where [FSno]=1";
-                        cmd1.ExecuteNonQuery();
+                    }
+                    //銷貨主檔
+                    cmd1.CommandText = $"INSERT INTO [MSales] ([Sno],[Price],[Scode],[Discount],[TrType]) VALUES('{textBox1.Text.Trim()}',{textBox4.Text.Trim()},'{textBox5.Text.Trim()}',{textBox6.Text.Trim()},{trtype})";
+                    cmd1.ExecuteNonQuery();
+                    //變更當前發票檔
+                    cmd1.CommandText = $"UPDATE [OtherConfigs] SET [F4]='{textBox1.Text.Substring(0, 2) + (Convert.ToInt32(textBox1.Text.Substring(2, 8)) + 1).ToString()}' where [FSno]=1";
+                    cmd1.ExecuteNonQuery();
+                    try
+                    {
                         sqlTransaction.Commit();
-                        //清檔
-                        invoiceClear();
-                        button5.Enabled = false;
+                        isok = true;                       
                     }
                     catch
                     {
@@ -285,7 +283,23 @@ namespace WTools.PostDesk
                             return;
                         }
                     }
-                    //廢除發票
+                    if (isok)
+                    {
+                        //列印發票
+                        //InvoicePrinting(textBox1.Text.Trim());
+                        //電子發票XML上傳檔
+                        //MigXml.F0401XML("MT43487100");                      
+                        //清檔
+                        invoiceClear();
+                        button5.Enabled = false;
+                        //檢查庫存量
+                        DataTable temdt = MainForm.CheckProduct();
+                        if (temdt != null && temdt.Rows.Count > 0)
+                        {
+                            FCheckProduct fCheckProduct = new FCheckProduct(temdt);
+                            fCheckProduct.ShowDialog();
+                        }
+                    }
                 }
                 else
                 {
@@ -354,26 +368,34 @@ namespace WTools.PostDesk
             TmpButtonConfig(0);
         }
 
+        private DataRow GetProductRow(string ptid)
+        {
+            DataRow dr=null;
+            string sql = $"SELECT [MB001],[MB002],[MB004],[MB064],[MB051],Gp,[GpSno] from(SELECT [MB001],[MB002],[MB004],[MB064],[MB051],0 Gp,[GpSno] FROM [Products] union SELECT  GpId [MB001],[GpName],'',99,[GpPrice],1,'' FROM [GpProductM]) c WHERE [MB001]='{ptid}'";
+            SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Connection.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(sdr);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                dr = dt.Rows[0];
+            }
+            return dr;
+        }
         private void TB001_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
             {
-                int isok = -1;
-                for (int i = 0; i < MainForm.PDT.Rows.Count; i++)
-                {
-                    string tmp = MainForm.PDT.Rows[i][0].ToString().Trim();
-                    if (tmp == textBox2.Text.Trim())
-                    {
-                        isok = i;
-                        break;
-                    }
-                }
-                if (isok > -1)
+                DataRow dr1 = GetProductRow(textBox2.Text.Trim());
+           
+                if (dr1 !=null)
                 {
                     textBox2.Text = "";
                     textBox2.Focus();
-                    DataRow dr1 = MainForm.PDT.Rows[isok];
                     DataRow dr2 = MainForm.DTsale.NewRow();
+                    //MB002,MB051,MB064,Total,MB001,Gp,GpSno
                     dr2[0] = dr1[1];
                     dr2[4] = dr1[0];
                     dr2[1] = dr1[4];
@@ -389,7 +411,7 @@ namespace WTools.PostDesk
                         {
                             textBox1.Text = cmd1.ExecuteScalar().ToString();
                         }
-                        catch (Exception ex)
+                        catch
                         {
                             MessageBox.Show("發票設定異常!!!!");
                             return;
@@ -404,56 +426,6 @@ namespace WTools.PostDesk
             }
         }
 
-
-        /*
-        private void TB001_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                int isok = -1;
-                for (int i = 0; i < MainForm.PDT.Rows.Count; i++)
-                {
-                    string tmp = MainForm.PDT.Rows[i][0].ToString().Trim();
-                    if (tmp == textBox2.Text.Trim())
-                    {                  
-                        isok = i;
-                        break;
-                    }
-                }
-                if (isok > -1)
-                {
-                    textBox2.Text = "";
-                    textBox2.Focus();
-                    DataRow dr1 = MainForm.PDT.Rows[isok];
-                    DataRow dr2 = MainForm.DTsale.NewRow();
-                    dr2[0] = dr1[1];
-                    dr2[4] = dr1[0];
-                    dr2[1] = dr1[4];
-                    dr2[5] = dr1[5];
-                    dr2[6] = dr1[6];
-                    dialogform dl = new dialogform(dr1[1].ToString());
-                    dl.Text = "出售量";
-                    DialogResult dr = dl.ShowDialog();
-                    if (dr == DialogResult.OK)
-                    {
-                        if (MainForm.DTsale.Rows.Count == 0)
-                        {
-                            //取得發票編號
-                            SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
-                            SqlCommand cmd1 = new SqlCommand("SELECT [F4] FROM [OtherConfigs] where [FSno]=1", conn1);
-                            cmd1.Connection.Open();
-                            textBox1.Text = cmd1.ExecuteScalar().ToString();
-                            //string NO2=NO1.Substring(6,4);
-                        }
-                        dr2[2] = dl.GetMsg();
-                        dr2[3] = dl.GetMsg() * Convert.ToInt32(dr1[4]);
-                        MainForm.DTsale.Rows.Add(dr2);
-                        RowsSun();
-                    }
-                }
-            }
-        }
-        */
         private void button12_Click(object sender, EventArgs e)
         {
             textBox2.Text = "";
@@ -481,24 +453,15 @@ namespace WTools.PostDesk
             }
 
             textBox2.Focus();
-            string sql = "SELECT [MB001],[MB002],[MB004],[MB064],[MB051],0 Gp,[GpSno] FROM [Products] union SELECT [GpId],[GpName],'',99,[GpPrice],1,'' FROM [GpProductM] WHERE 1=1";
+            
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
-            sql += " order by MB002";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlCommand cmd = new SqlCommand("SELECT [GpSno],[Quty],[Price],[SubMoney],[SubDiscount],[GpName] FROM [DiscountRule] where GETDATE() between [StDate] and [EdDate]", conn);
             cmd.Connection.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
-            MainForm.PDT.Rows.Clear();
             if (sdr.HasRows)
-            {
-                MainForm.PDT.Load(sdr);
+            { 
+                Discounts.Load(sdr);
                 sdr.Close();
-                cmd.CommandText = "SELECT [GpSno],[Quty],[Price],[SubMoney],[SubDiscount],[GpName] FROM [DiscountRule] where GETDATE() between [StDate] and [EdDate]";
-                sdr = cmd.ExecuteReader();
-                if (sdr.HasRows)
-                { 
-                    Discounts.Load(sdr);
-                    sdr.Close();
-                }
             }
             dataGridView2.DataSource = MainForm.DTsale;
 
@@ -508,14 +471,12 @@ namespace WTools.PostDesk
             dataColumn1.AllowDBNull = false;
             dataColumn1.DataType = typeof(string);
             dataColumn1.ColumnName = "MB001";
-            dataColumn1.AllowDBNull = false;
             CheckDt.Columns.Add(dataColumn1);
 
             dataColumn1 =new DataColumn();
             dataColumn1.AllowDBNull = false;
             dataColumn1.DataType = typeof(string);
             dataColumn1.ColumnName = "MB002";
-            dataColumn1.AllowDBNull = false;
             CheckDt.Columns.Add(dataColumn1);
 
             dataColumn1 = new DataColumn();
@@ -531,10 +492,50 @@ namespace WTools.PostDesk
             dataColumn1.ColumnName = "MB051";
             CheckDt.Columns.Add(dataColumn1);
 
+            //RealDiscount 實際優惠折扣
+            RealDiscount = new DataTable();
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(string);
+            dataColumn1.ColumnName = "ID";
+            RealDiscount.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "SubMoney";
+            RealDiscount.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "Quty";
+            RealDiscount.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "Counts";
+            RealDiscount.Columns.Add(dataColumn1);
+
+            dataColumn1 = new DataColumn();
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.DataType = typeof(int);
+            dataColumn1.ColumnName = "RelCounts";
+            RealDiscount.Columns.Add(dataColumn1);
+
             //切換功能重計金額
             if (MainForm.DTsale.Rows.Count > 0)
             {
                 RowsSun();
+            }
+            //檢查庫存量
+            DataTable temdt = new DataTable();
+            temdt = MainForm.CheckProduct();
+            if (temdt != null && temdt.Rows.Count > 0)
+            {
+                FCheckProduct fCheckProduct = new FCheckProduct(temdt);
+                fCheckProduct.ShowDialog();
             }
         }
 
@@ -640,11 +641,6 @@ namespace WTools.PostDesk
             }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button22_Click(object sender, EventArgs e)
         {
             TmpButtonConfig(1);
@@ -655,44 +651,115 @@ namespace WTools.PostDesk
             TmpButtonConfig(2);
         }
 
-        //發票列印
-        private void InvoicePrint()
+        /*
+         * 電子發票上傳
+        private void button24_Click(object sender, EventArgs e)
         {
-            //寫入資料
-            InvoicePrint oPrinter = new InvoicePrint();
-
-            //送出列印
-            InvoiceData data = new InvoiceData();
-            int year = DateTime.Today.Year - 1911;
-            string month = DateTime.Today.ToString("MM");
-            string day = DateTime.Today.ToString("dd");
-            if (Convert.ToInt16(month) % 2 == 0)
+            MigXml.F0401XML("MT43487100");
+            MigXml.F0501ToXmls("MT43487100","TEST...");
+        }
+        */
+        //發票列印
+        private void InvoicePrint2(string InviceNo)
+        {
+            int Y = DateTime.Now.Year - 1911;
+            int M = DateTime.Now.Month;
+            int D = DateTime.Now.Day;
+            List<SaleOrder.InvoicePrint.Product> products = new List<SaleOrder.InvoicePrint.Product>();
+            SaleOrder.InvoicePrint invoice = new SaleOrder.InvoicePrint();
+            invoice.MastQrcode = new InvoiceData();
+            SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+            SqlCommand cmd1 = new SqlCommand($"SELECT (SELECT TOP (1) [MB002] FROM [Products] where [MB001]=a.[MB001]) [Name],sum([Quty]) [Quty],sum([Tprice]-[Discount]) [Price] FROM [TSales] a where [Sno]='{InviceNo}' group by [MB001]", conn1);
+            cmd1.Connection.Open();
+            SqlDataReader item = cmd1.ExecuteReader();
+            while (item.Read())
             {
-                data.InvoiceDruin = $"{year}{month}";
+                SaleOrder.InvoicePrint.Product product = new SaleOrder.InvoicePrint.Product();
+                product.Name = item["Name"].ToString();
+                product.Qutys = Convert.ToInt16(item["Quty"]);
+                product.Price = Convert.ToInt16(item["Price"]);
+                products.Add(product);
+            }
+            invoice.MastQrcode.QRCode2 = products;
+
+            if (Convert.ToInt16(M) % 2 == 0)
+            {
+                invoice.MastQrcode.InvoiceDruin = $"{Y}{M:00}";
             }
             else
             {
-                data.InvoiceDruin = $"{year}{Convert.ToInt16(month) + 1}";
+                invoice.MastQrcode.InvoiceDruin = $"{Y}{(M + 1):00}";
             }
+            invoice.MastQrcode.CopanyName = MainForm.CpInfo[0];
+            invoice.MastQrcode.SellerIdentifier = MainForm.CpInfo[1];
+            invoice.MastQrcode.BusinessIdentifier = MainForm.CpInfo[1];
+            invoice.MastQrcode.InvoiceNumber = textBox1.Text.Trim();
+            invoice.MastQrcode.InvoiceDate = Y.ToString() + DateTime.Today.ToString("MMdd");
+            invoice.MastQrcode.InvoiceTime = DateTime.Now.ToString("HH:mm:ss");
+            invoice.MastQrcode.TotalAmount = Convert.ToDecimal(textBox7.Text.Trim());
+            if (textBox5.Text.Trim().Length == 8) { invoice.MastQrcode.BuyerIdentifier = textBox5.Text.Trim(); }
+            invoice.MastQrcode.BarCode = invoice.BarCodeINV();
+            invoice.MastQrcode.SalesAmount = 0;
+            invoice.MastQrcode.TaxAmount = 0;
+            invoice.MastQrcode.QRCode1 = invoice.QRCodeINV();
+            invoice.MastQrcode.PrintName = MainForm.CpInfo[2];
+            invoice.Print();
+        }
 
-
-            data.InvoiceNumber = textBox1.Text;
-            data.InvoiceDate = DateTime.Today.ToString($"{year}-MM-dd");
-            data.InvoiceTime = DateTime.Now.ToString("HH:MM:ss");
-            data.TotalAmount = Convert.ToInt16(textBox4.Text);
-            data.BuyerIdentifier = textBox5.Text;
-            data.BarCode = oPrinter.BarCodeINV(data.InvoiceDruin, data.InvoiceNumber, data.RandomNumber);
-            data.QRCode2 = new List<Product>();
-            foreach (DataRow dr in MainForm.DTsale.Rows)
+        private void InvoicePrinting(string InviceNo)
+        {
+            int Y = DateTime.Now.Year - 1911;
+            int M = DateTime.Now.Month;
+            int D = DateTime.Now.Day;
+            string PtList = "";
+            List<WTools.InvoicePrint.Product> products=new List<WTools.InvoicePrint.Product>();
+            WTools.InvoicePrint invoice = new WTools.InvoicePrint();
+            invoice.MastQrcode = new WTools.InvoicePrint.InvoiceData();
+            SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+            SqlCommand cmd1 = new SqlCommand($"SELECT (SELECT TOP (1) [MB002] FROM [Products] where [MB001]=a.[MB001]) [Name],sum([Quty]) [Quty],sum([Tprice]-[Discount]) [Price] FROM [TSales] a where [Sno]='{InviceNo}' group by [MB001]", conn1);
+            cmd1.Connection.Open();
+            SqlDataReader item = cmd1.ExecuteReader();
+            while (item.Read())
             {
-                Product product = new Product();
-                product.Name = dr[0].ToString();
-                product.Price = Convert.ToInt16(dr[1]);
-                product.Qutys = Convert.ToInt16(dr[2]);
-                data.QRCode2.Add(product);
+                WTools.InvoicePrint.Product product = new WTools.InvoicePrint.Product();
+                product.Name = item["Name"].ToString();
+                product.Qutys = Convert.ToInt16(item["Quty"]);
+                product.Price = Convert.ToInt16(item["Price"]);
+                products.Add(product);
             }
-            oPrinter.MastQrcode = data;
-            oPrinter.Print();
+            invoice.MastQrcode.QRCode2 = products;
+            if (products.Count == 1)
+            {
+                PtList = $"{products[0].Name}:{products[0].Qutys}:{products[0].Price}:";
+            }
+            /*
+             foreach(var Ptitem in products)
+            {
+                PtList += $"{Ptitem.Name}:{Ptitem.Qutys}:{Ptitem.Price}:";
+            }
+             */
+            if (Convert.ToInt16(M) % 2 == 0)
+            {
+                invoice.MastQrcode.InvoiceDruin = $"{Y}{M:00}";
+            }
+            else
+            {
+                invoice.MastQrcode.InvoiceDruin = $"{Y}{(M + 1):00}";
+            }
+            invoice.MastQrcode.CopanyName = MainForm.CpInfo[0];
+            invoice.MastQrcode.SellerIdentifier = MainForm.CpInfo[1];
+            invoice.MastQrcode.BusinessIdentifier=MainForm.CpInfo[1];
+            invoice.MastQrcode.InvoiceNumber = textBox1.Text.Trim();
+            invoice.MastQrcode.InvoiceDate = Y.ToString()+DateTime.Today.ToString("MMdd");
+            invoice.MastQrcode.InvoiceTime = DateTime.Now.ToString("HH:mm:ss");
+            invoice.MastQrcode.TotalAmount = Convert.ToDecimal(textBox7.Text.Trim());
+            if (textBox5.Text.Trim().Length==8) { invoice.MastQrcode.BuyerIdentifier = textBox5.Text.Trim(); }
+            invoice.MastQrcode.BarCode = invoice.BarCodeINV(invoice.MastQrcode.InvoiceDruin, invoice.MastQrcode.InvoiceNumber, invoice.MastQrcode.RandomNumber);
+            invoice.MastQrcode.SalesAmount = 0;
+            invoice.MastQrcode.TaxAmount = 0;
+            invoice.MastQrcode.QRCode1 = invoice.QRCodeINV(PtList);         
+            invoice.MastQrcode.PrintName=MainForm.CpInfo[2];           
+            invoice.Print();
         }
     }
 }

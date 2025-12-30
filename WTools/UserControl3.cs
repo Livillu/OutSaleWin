@@ -1,13 +1,7 @@
-﻿using NiceLabel.SDK;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using System.Diagnostics;
-using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
 
 namespace WTools
 {
@@ -29,10 +23,10 @@ namespace WTools
                 if (dateTimePicker1.Text != "" && dateTimePicker2.Text != "") sqlparam += " AND Cdate BETWEEN '" + dateTimePicker1.Text + "' AND '" + dateTimePicker2.Text + "  23:59:59'";
                 if (textBox2.Text != "") sqlparam += " AND a.MB001 LIKE '%" + textBox2.Text + "%' OR  MB002 LIKE '%" + textBox2.Text + "%'";
             }
-            dataGridView1.DataSource = null;
+            //dataGridView1.DataSource = null;
             DT = new DataTable();
 
-            string sqlstring = "SELECT a.[Sno] 發票編號,a.[MB001] 品號,[MB002] 品名,[MB003] 規格,[MB004] 單位,[Quty] 數量,a.[Price] 單價,[Tprice] 金額,FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期 ";
+            string sqlstring = "SELECT a.[Sno] 發票編號,a.[MB001] 品號,[MB002] 品名,[MB003] 規格,[MB004] 單位,[Quty] 數量,a.[Price] 單價,a.[Discount] 折扣,[Tprice]-a.[Discount] 金額,FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期 ";
             sqlstring += "FROM [TSales] a inner join Products b on a.MB001 = b.MB001 inner join [MSales] c on a.Sno = c.Sno WHERE [Isok]='1'" + sqlparam;
 
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
@@ -46,7 +40,7 @@ namespace WTools
             {
                 foreach (DataRow dr in DT.Rows)
                 {
-                    total += Convert.ToInt64(dr[7]);
+                    total += Convert.ToInt64(dr[8]);
                     rows++;
                 }
             }

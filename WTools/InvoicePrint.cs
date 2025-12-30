@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using static WTools.InvoicePrint;
@@ -20,7 +19,7 @@ namespace WTools
         public InvoiceData MastQrcode;//發票明檔
         
         const string KeyIV = "Dt8lyToo17X/XkXaQvihuA==";
-        const string AESKey = "Dt8lyToo17X/XkXaQvihuA==";/// <param name="AESKey">種子密碼(QRcode)</param>
+        const string AESKey = "2B2DD98C7A1766930E6962E77014C171";/// <param name="AESKey">種子密碼(QRcode)</param>
 
         #region 產品資訊
         public class Product
@@ -34,19 +33,24 @@ namespace WTools
         #region 電子發票DATA
         public class InvoiceData
         {
-            public string CopanyName { get; set; } = "好米亞";
+            public string CopanyName { get; set; }
             public string InvoiceTital { get; set; } = "電子發票證明聯";
             public string InvoiceDruin { get; set; }
             public string InvoiceNumber { get; set; }
             public string InvoiceDate { get; set; }
             public string InvoiceTime { get; set; }
             public string RandomNumber { get; set; } = GetRandomCode();
+            public decimal SalesAmount { get; set; } = 0;
+            public decimal TaxAmount { get; set; } = 0;
             public decimal TotalAmount { get; set; }
-            public string SellerIdentifier { get; set; } = "53290529";
-            public string BuyerIdentifier { get; set; }
+            public string SellerIdentifier { get; set; }
+            public string BuyerIdentifier { get; set; } = "00000000";
+            public string RepresentIdentifier { get; set; } = "00000000";
+            public string BusinessIdentifier { get; set; }
             public string BarCode { get; set; }
             public string QRCode1 { get; set; }
             public List<Product> QRCode2 { get; set; }
+            public string PrintName;
         }
         #endregion
 
@@ -293,33 +297,21 @@ namespace WTools
         /// <param name="AESKey">加解密金鑰(QR種子密碼)</param>
 
         /// <summary>
-        public string QRCodeINV(string InvoiceNumber,
-            string InvoiceDate,
-            string InvoiceTime,
-            string RandomNumber,
-            decimal SalesAmount,
-            decimal TaxAmount,
-            decimal TotalAmount,
-            string BuyerIdentifier,
-            string RepresentIdentifier,
-            string SellerIdentifier,
-            string BusinessIdentifier,
-            string product,
-            string AESKey)
+        public string QRCodeINV(string product)
         {
             try
             {
-                this.inputValidate(InvoiceNumber,
-                    InvoiceDate,
-                    InvoiceTime,
-                    RandomNumber,
-                    SalesAmount,
-                    TaxAmount,
-                    TotalAmount,
-                    BuyerIdentifier,
-                    RepresentIdentifier,
-                    SellerIdentifier,
-                    BusinessIdentifier,
+                this.inputValidate(MastQrcode.InvoiceNumber,
+                    MastQrcode.InvoiceDate,
+                    MastQrcode.InvoiceTime,
+                    MastQrcode.RandomNumber,
+                    MastQrcode.SalesAmount,
+                    MastQrcode.TaxAmount,
+                    MastQrcode.TotalAmount,
+                    MastQrcode.BuyerIdentifier,
+                    MastQrcode.RepresentIdentifier,
+                    MastQrcode.SellerIdentifier,
+                    MastQrcode.BusinessIdentifier,
                     product,
                     AESKey);
             }
@@ -327,10 +319,10 @@ namespace WTools
             {
                 throw exception;
             }
-            return ((InvoiceNumber + InvoiceDate + RandomNumber +
-                Convert.ToInt32(SalesAmount).ToString("x8") +
-                Convert.ToInt32(TotalAmount).ToString("x8") +
-                BuyerIdentifier + SellerIdentifier) + AESEncrypt(InvoiceNumber + RandomNumber, AESKey).PadRight(0x18) + product);
+            return ((MastQrcode.InvoiceNumber + MastQrcode.InvoiceDate + MastQrcode.RandomNumber +
+                Convert.ToInt32(MastQrcode.SalesAmount).ToString("x8") +
+                Convert.ToInt32(MastQrcode.TotalAmount).ToString("x8") +
+                MastQrcode.BuyerIdentifier + MastQrcode.SellerIdentifier) + AESEncrypt(MastQrcode.InvoiceNumber + MastQrcode.RandomNumber, AESKey).PadRight(0x18) + product);
 
         }
         #endregion
@@ -379,7 +371,7 @@ namespace WTools
 
             /**** 準備列印 ****/
             System.Drawing.Printing.PrintDocument oDocument = new System.Drawing.Printing.PrintDocument();
-            oDocument.DefaultPageSettings.PrinterSettings.PrinterName = "EPSON LQ-690CII ESC/P2";
+            oDocument.DefaultPageSettings.PrinterSettings.PrinterName = MastQrcode.PrintName;
             oDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("3InchPaper", 290, int.MaxValue);
             oDocument.PrintPage += setDocumentContent;  //delegate給setDocumentContent
             oDocument.Print();
@@ -426,7 +418,7 @@ namespace WTools
                 fPrintY += fVertical * 2;
                 */
                 //繪製公司抬頭
-                e.Graphics.DrawString(MastQrcode.CopanyName, oFontHeader, oBrush, 59F, fPrintY);
+                e.Graphics.DrawString(MastQrcode.CopanyName, oFontHeader, oBrush, fPrintX_Item, fPrintY);
                 fPrintY += fVertical * 1.4F;
 
                 //繪製固定格式
@@ -443,7 +435,7 @@ namespace WTools
                 fPrintY += fVertical * 1.4F;
 
                 //繪製發票日期
-                e.Graphics.DrawString(MastQrcode.InvoiceDate, oFontContent, oBrush, new System.Drawing.RectangleF(fPrintX_Item, fPrintY, fPrintX_Price - fPrintX_Item, fVertical));
+                e.Graphics.DrawString(DateTime.Today.ToString("yyyy-MM-dd"), oFontContent, oBrush, new System.Drawing.RectangleF(fPrintX_Item, fPrintY, fPrintX_Price - fPrintX_Item, fVertical));
                 e.Graphics.DrawString(MastQrcode.InvoiceTime, oFontContent, oBrush, new System.Drawing.RectangleF(fPrintX_Price, fPrintY, fPageWidth - fPrintX_Price, fVertical), new System.Drawing.StringFormat() { Alignment = System.Drawing.StringAlignment.Far });
                 fPrintY += fVertical * 1.15F;
 
@@ -454,7 +446,7 @@ namespace WTools
 
                 //繪製買賣方發票
                 e.Graphics.DrawString("賣方 " + MastQrcode.SellerIdentifier, oFontContent, oBrush, new System.Drawing.RectangleF(fPrintX_Item, fPrintY, fPrintX_Price - fPrintX_Item, fVertical));
-                if (MastQrcode.BuyerIdentifier != "")
+                if (MastQrcode.BuyerIdentifier != "00000000")
                 { e.Graphics.DrawString("買方 " + MastQrcode.BuyerIdentifier, oFontContent, oBrush, new System.Drawing.RectangleF(fPrintX_Price, fPrintY, fPageWidth - fPrintX_Price, fVertical), new System.Drawing.StringFormat() { Alignment = System.Drawing.StringAlignment.Far }); }
                 fPrintY += fVertical * 1.15F;
 
@@ -462,26 +454,18 @@ namespace WTools
                 e.Graphics.DrawString(MastQrcode.BarCode, oFontBarcode, oBrush, fPrintX_Item, fPrintY);
                 fPrintY += fVertical * 1.4F;
 
-                //繪製QRCODE
-                String product = $"{MastQrcode.QRCode2[0].Name}:{MastQrcode.QRCode2[0].Qutys.ToString()}:{MastQrcode.QRCode2[0].Price.ToString()}:";
-                String result = QRCodeINV("AA12345678", "1001231", "150000", "1234", 100, 100, 100, "12345678", "87654321", "12344321", "43211234", product, "05D4A324ABAF4A570E64E572221E438B");
-
-                // Create a QR code generator
+                //繪製QRCODE1
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(result, QRCodeGenerator.ECCLevel.Q);
-                // Create a QR code object
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(MastQrcode.QRCode1, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
-
-                // Get the QR code graphic as a Bitmap
-                // The parameter (e.g., 20) controls the size of each module (pixel) in the QR code.
-                // A larger value results in a larger image.
 
                 Bitmap oTemp = qrCode.GetGraphic(20);
                 oTemp.SetResolution(400F, 400F);
-                Bitmap oTemp2 = new Bitmap(80, 80);
+                Bitmap oTemp2 = new Bitmap(84, 84);
                 Graphics graphics = Graphics.FromImage(oTemp2);
                 graphics.DrawImage(oTemp, new Rectangle(0, 0, 160, 160));
                 e.Graphics.DrawImage(oTemp2, new PointF(fPrintX_Item, fPrintY));
+
                 if (MastQrcode.QRCode2.Count > 1)
                 {
                     string items = "**";
@@ -489,19 +473,12 @@ namespace WTools
                     {
                         items += $"{MastQrcode.QRCode2[i].Name}:{MastQrcode.QRCode2[i].Qutys.ToString()}:{MastQrcode.QRCode2[i].Price.ToString()}:";
                     }
-                    // Create a QR code generator
                     qrGenerator = new QRCodeGenerator();
                     qrCodeData = qrGenerator.CreateQrCode(items, QRCodeGenerator.ECCLevel.Q);
-                    // Create a QR code object
-                    qrCode = new QRCode(qrCodeData);
-
-                    // Get the QR code graphic as a Bitmap
-                    // The parameter (e.g., 20) controls the size of each module (pixel) in the QR code.
-                    // A larger value results in a larger image.
-
+                    qrCode = new QRCode(qrCodeData);     
                     oTemp = qrCode.GetGraphic(20);
                     oTemp.SetResolution(400F, 400F);
-                    oTemp2 = new Bitmap(80, 80);
+                    oTemp2 = new Bitmap(84, 84);
                     graphics = Graphics.FromImage(oTemp2);
                     graphics.DrawImage(oTemp, new Rectangle(0, 0, 160, 160));
                     e.Graphics.DrawImage(oTemp2, new PointF(fPrintX_Item + 100, fPrintY));
@@ -719,12 +696,9 @@ namespace WTools
                 //繪製QRCODE
                 InvoicePrint invoicePrint = new InvoicePrint();
 
-                String product = $"{invoiceData1.QRCode2[0].Name}:{invoiceData1.QRCode2[0].Qutys.ToString()}:{invoiceData1.QRCode2[0].Price.ToString()}:";
-                String result = invoicePrint.QRCodeINV("AA12345678", "1001231", "150000", "1234", 100, 100, 100, "12345678", "87654321", "12344321", "43211234", product, "05D4A324ABAF4A570E64E572221E438B");
-
                 // Create a QR code generator
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(result, QRCodeGenerator.ECCLevel.Q);
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(invoiceData1.QRCode1, QRCodeGenerator.ECCLevel.Q);
                 // Create a QR code object
                 QRCode qrCode = new QRCode(qrCodeData);
 

@@ -667,6 +667,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="QREncrypter.dll" size="7680">
+      <assemblyIdentity name="QREncrypter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Wcx+53rqqYH8+VnWD6UdT6HxKWXgE0AW0vRwhRv70k8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScottPlot.dll" size="1191424">
       <assemblyIdentity name="ScottPlot" version="5.1.57.0" publicKeyToken="86698DC10387C39E" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -751,6 +763,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Configuration.ConfigurationManager.dll" size="95504">
+      <assemblyIdentity name="System.Configuration.ConfigurationManager" version="10.0.0.1" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CdMmZCKMYkje1HhvOy4zJmzIb1qm/4HgbyrjAACdKEc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Memory.dll" size="142240">
       <assemblyIdentity name="System.Memory" version="4.0.1.2" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -799,14 +823,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTools.exe" size="734640">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTools.exe" size="789936">
       <assemblyIdentity name="WTools" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ddZxya8oH2RJDFoF0GGKnnkhq6hwwIBKjfBoE4z/M10=</dsig:DigestValue>
+        <dsig:DigestValue>TIzuBr/bO9x588jC0+TTnGorkR2DDJz2FLFOuIL63ZE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -16,58 +16,40 @@ namespace WTools
     {
         DataTable TTD;
         int tbInOut,Sid=0;
+        string buttonStatus = "";
         public UserOtherIO()
         {
             InitializeComponent();
         }
-        private void prgstatus(int index)
+        private void Change(int index)
         {
-            tbMark.Enabled = false;
-            tbSno.Enabled = false;
-            tbMark.Enabled = false;
-            tbMB001.Enabled = false;
-            tbQuty.Enabled = false;
-            tbPrice.Enabled = false;
-            if (index == 0)
+            tabControl1.TabPages.Clear();
+            if (index == 2)
             {
-                tbMark.Enabled = true;
-                tbSno.Enabled = true;
-                tbMark.Enabled = true;
-                tbMB001.Enabled = true;
-                tbQuty.Enabled = true;
-                tbPrice.Enabled = true;
+                tabControl1.TabPages.Add(tabPage2);
             }
-            if (index == 1)
+            else
             {
-                tbMark.Enabled = true;
-                tbMark.Enabled = true;
-                tbMB001.Enabled = true;
-                tbQuty.Enabled = true;
-                tbPrice.Enabled = true;
+                tabControl1.TabPages.Add(tabPage1);
             }
         }
-
-        private void Setbutton(string tp)
+        private void ButtonChange(int index)
         {
-            if (tp == "A")
+            button9.Enabled = true;
+            button8.Enabled = true;
+            switch (index)
             {
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button5.Enabled = true;
-                button4.Enabled = true;
-            }
-            if (tp == "S")
-            {
-                prgstatus(5);
-                button2.Enabled = true;
-                button3.Enabled = true;
-                button5.Enabled = false;
-                button4.Enabled = false;
+                case 1://新增狀態
+                    button9.Enabled = false;
+                    button8.Enabled = false;
+                    break;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ButtonChange(0);
+            Change(1);
             TTD = new DataTable();
             SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd1 = new SqlCommand("", conn1);
@@ -83,53 +65,87 @@ namespace WTools
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Sid = 0;
-            Setbutton("A");
-            tbMark.Text = "";
-            tbSno.Text = "";
-            tbQuty.Value = 0;
-            tbPrice.Value = 0;
-            tbMB001.Text = "";
-            dateTimePicker1.Value = DateTime.Now;
-            prgstatus(0);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (Sid >0)
-            {
-                Setbutton("A");
-                prgstatus(1);
-            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Setbutton("S");
+            ButtonChange(0);
+            Change(1);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Setbutton("S");
             if (radioButton1.Checked) tbInOut = -1;
             else tbInOut = 1;
             SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd1 = new SqlCommand($"SELECT count(*) FROM [OtherCost] where [Id]={Sid}", conn1);
             cmd1.Connection.Open();
             string sql;
-            if (Convert.ToInt16(cmd1.ExecuteScalar()) > 0)
+            if (buttonStatus == "Edit")
             {
                 sql = $"UPDATE [OtherCost] SET [Sno] = '{tbSno.Text}',[MB001] ='{tbMB001.Text}' ,[Quty] ='{tbQuty.Value}' ,[Price] ='{tbPrice.Value}' ,[InOut] ='{tbInOut}' ,[Mark] ='{tbMark.Text}',[Cdate]='{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}' WHERE [Id] = {Sid}";
                 cmd1.CommandText = sql;
             }
-            else
+            else if (buttonStatus == "New")
             {
                 sql = $"INSERT INTO [OtherCost]([Sno],[MB001],[Quty],[Price],[InOut],[Mark],[Cdate]) VALUES('{tbSno.Text}','{tbMB001.Text}',{tbQuty.Value},{tbPrice.Value},{tbInOut},'{tbMark.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd hh:mm:ss")}')";
                 cmd1.CommandText = sql;
             }
-            cmd1.ExecuteNonQuery();
-            prgstatus(2);
-            button1.PerformClick();
+            if (cmd1.ExecuteNonQuery() > 0)
+            {
+                button1.PerformClick();
+                MessageBox.Show("存檔完成....");
+            }
+            else
+            {
+                MessageBox.Show("存檔失敗!!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            buttonStatus = "New";
+            Sid = 0;
+            tbMark.Text = "";
+            tbSno.Text = "";
+            tbQuty.Value = 0;
+            tbPrice.Value = 0;
+            tbMB001.Text = "";
+            dateTimePicker1.Value = DateTime.Now;          
+            tbSno.Enabled = true;
+            tabPage2.Text = "新增";
+            ButtonChange(1);
+            Change(2);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                buttonStatus = "Edit";
+                DataGridViewRow dgr = dataGridView1.SelectedRows[0];
+                tbQuty.Value = Convert.ToDecimal(dgr.Cells["Quty"].Value);
+                tbPrice.Value = Convert.ToDecimal(dgr.Cells["Price"].Value);
+                tbMB001.Text = dgr.Cells["MB001"].Value.ToString().Trim();
+                tbSno.Text = dgr.Cells["Sno"].Value.ToString().Trim();
+                Sid =Convert.ToInt32(dgr.Cells["Id"].Value);
+                if (Convert.ToInt16(dgr.Cells["InOut"].Value) > 0)
+                {
+                    radioButton2.Checked=true;
+                }
+                dateTimePicker1.Value = Convert.ToDateTime(dgr.Cells["Cdate"].Value);
+                tbMark.Text = dgr.Cells["Mark"].Value.ToString().Trim();
+                tbSno.Enabled = false;
+                tabPage2.Text = "編輯";
+                Change(2);
+                ButtonChange(1);
+            }
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)

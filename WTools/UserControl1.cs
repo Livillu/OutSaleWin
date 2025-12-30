@@ -89,15 +89,10 @@ namespace WTools
             }
         }
 
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Getdate(string sqlparam)
         {
             if (dt1 != null && dt1.Rows.Count > 0) dt1.Rows.Clear();
-            string sqlstring = "SELECT a.[MB001] 品號,[MB002] 品名,[MB003] 規格,[MB004] 單位,[Quty] 數量,a.[Price] 單價,[Tprice] 金額,FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期 ";
+            string sqlstring = "SELECT a.[MB001] 品號,[MB002] 品名,[MB003] 規格,[MB004] 單位,[Quty] 數量,a.[Price] 單價,a.[Discount] 折扣,[Tprice]-a.[Discount] 金額, FORMAT([Cdate], 'yyyy-MM-dd HH:mm:ss') 日期 ";
             sqlstring += $"FROM [TSales] a inner join Products b on a.MB001 = b.MB001 inner join[MSales] c on a.Sno = c.Sno WHERE a.[Sno]='{sqlparam}'";
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd = new SqlCommand(sqlstring, conn);
@@ -110,11 +105,6 @@ namespace WTools
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             Getdate(dt.Rows[e.RowIndex][0].ToString());
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

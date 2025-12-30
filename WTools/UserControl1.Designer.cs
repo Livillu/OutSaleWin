@@ -181,7 +181,6 @@
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 16;
             this.label2.Text = "發票編號";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dataGridView2
             // 
@@ -270,7 +269,6 @@
             this.Controls.Add(this.button1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(1276, 859);
-            this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

@@ -14,7 +14,7 @@ namespace WTools
 {
     public partial class UserAssember : UserControl
     {
-        DataTable DT, DTsale, DT1;
+        DataTable DT, DTsale;
         public UserAssember()
         {
             InitializeComponent();
@@ -151,7 +151,7 @@ namespace WTools
         private void button2_Click(object sender, EventArgs e)
         {
             DT = new DataTable();
-            string sql = "SELECT [GpId],[GpName],[GpPrice] FROM [GpProductM] WHERE 1=1";
+            string sql = "SELECT [MB001],[GpName],[GpPrice] FROM [GpProductM] WHERE 1=1";
             SqlConnection conn = new SqlConnection(MainForm.OutPoscon);
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Connection.Open();

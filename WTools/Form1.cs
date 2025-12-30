@@ -12,16 +12,32 @@ namespace WTools
     {
         //public static string YScon = "Server =192.168.1.252;Database=TEST;User ID=sa;Password=dsc@53290529;encrypt=false;";
         public static string YScon = "Server =192.168.1.252;Database=YS;User ID=sa;Password=dsc@53290529;encrypt=false;";
+        public static string WP01 = "Server =192.168.1.252;Database=WP01;User ID=sa;Password=dsc@53290529;encrypt=false;";
         public static string OutPoscon = "Server=(localdb)\\MSSQLLocalDB;Database=OutPos;Integrated Security=true";
         public static string UserId = "System";
-        public static DataTable PDT;//折扣表
+        public static string PrintName = "";
+        //public static DataTable PDT;//折扣表
         public static DataTable DTsale;//當前交易表
         public static DataTable[] TmpsTable= { null, null, null };//暫存交易表
+        public static string[] CpInfo = { "", "", "" };//發票列印公司、統編、印表機
         public MainForm()
         {
             InitializeComponent();
         }
 
+        public static DataTable CheckProduct()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+            SqlCommand cmd1 = new SqlCommand("SELECT [MB001],[MB002] FROM [Products] where MB064<1", conn1);
+            cmd1.Connection.Open();
+            SqlDataReader sdr = cmd1.ExecuteReader();
+            if (sdr.HasRows)
+            {
+                dt.Load(sdr);
+            }
+            return dt;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             label1.Text = (sender as Button).Text;
@@ -49,50 +65,20 @@ namespace WTools
         {
             dialogLogin dw=new dialogLogin();
             dw.ShowDialog();
-            MainForm.PDT = new DataTable();
-            DataColumn dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
-            dataColumn1.DataType = typeof(string);
-            dataColumn1.ColumnName = "MB001";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
-            dataColumn1.DataType = typeof(string);
-            dataColumn1.ColumnName = "MB002";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = true;
-            dataColumn1.DataType = typeof(string);
-            dataColumn1.ColumnName = "MB004";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
-            dataColumn1.DataType = typeof(int);
-            dataColumn1.ColumnName = "MB064";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
-            dataColumn1.DataType = typeof(int);
-            dataColumn1.ColumnName = "MB051";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = false;
-            dataColumn1.DataType = typeof(int);
-            dataColumn1.ColumnName = "Gp";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            dataColumn1 = new DataColumn();
-            dataColumn1.AllowDBNull = true;
-            dataColumn1.DataType = typeof(string);
-            dataColumn1.ColumnName = "GpSno";
-            MainForm.PDT.Columns.Add(dataColumn1);
-
-            //sale
+            
+            //公司基本資料
+            SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
+            SqlCommand cmd1 = new SqlCommand("  SELECT TOP (1) [SupName],[SupSno],(SELECT TOP (1) [F1] FROM [OtherConfigs] where [FSno]=1) PrintName FROM [Company]", conn1);
+            cmd1.Connection.Open();
+            SqlDataReader sdr = cmd1.ExecuteReader();
+            if (sdr.Read())
+            {
+                CpInfo[0] = sdr["SupName"].ToString();
+                CpInfo[1] = sdr["SupSno"].ToString();
+                CpInfo[2] = sdr["PrintName"].ToString();
+            }
+            
+            //銷貨明細
             MainForm.DTsale = new DataTable();
             DataColumn dataColumn = new DataColumn();
             dataColumn.AllowDBNull = false;
@@ -143,9 +129,9 @@ namespace WTools
         private void button4_Click(object sender, EventArgs e)
         {
             label1.Text = (sender as System.Windows.Forms.Button).Text;
-            UserControl4 userControl4 = new UserControl4();
+            UserProductCreate userproductcreate = new UserProductCreate();
             panel2.Controls.Clear();
-            panel2.Controls.Add(userControl4);
+            panel2.Controls.Add(userproductcreate);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -655,6 +641,22 @@ namespace WTools
         private void 採購入庫ToolStripMenuItem_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as Button).Text;
+            UserOrderList userorderlist = new UserOrderList();
+            panel2.Controls.Clear();
+            panel2.Controls.Add(userorderlist);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            label1.Text = (sender as Button).Text;
+            UserGetStock usergetstock = new UserGetStock();
+            panel2.Controls.Clear();
+            panel2.Controls.Add(usergetstock);
         }
     }
 }

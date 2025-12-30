@@ -25,45 +25,25 @@ namespace WTools
             string SupId = "";
             if (combbox1.SelectedIndex > -1) SupId = dt.Rows[combbox1.SelectedIndex][0].ToString();
             SqlConnection conn1 = new SqlConnection(MainForm.OutPoscon);
-            SqlCommand cmd1 = new SqlCommand($"UPDATE [Products] SET [MB051] ={textBox5.Text} ,[MB002]='{textBox2.Text}',[MB003]='{textBox3.Text}',[MB004]='{textBox4.Text}',[MB064] = {textBox6.Text},[SupId]='{SupId}',[CostPrice]={textBox7.Text},[GpSno]='{textBox8.Text}' WHERE [MB001]='{textBox1.Text}'", conn1);
+            SqlCommand cmd1 = new SqlCommand($"UPDATE [Products] SET [MB051] ={textBox5.Text} ,[MB002]='{textBox2.Text}',[MB003]='{textBox3.Text}',[MB004]='{textBox4.Text}',[SupId]='{SupId}',[CostPrice]={textBox7.Text},[GpSno]='{textBox8.Text}' WHERE [MB001]='{textBox1.Text}'", conn1);
             cmd1.Connection.Open();
             //新增
             if (DR[0].ToString() == "")
             {
-                cmd1.CommandText = $"INSERT INTO Products([MB001],[MB002],[MB003],[MB004],[MB051],[MB064],[SupId],[CostPrice],[GpSno]) VALUES('{textBox1.Text}','{textBox2.Text}','{textBox3.Text}','{textBox4.Text}',{textBox5.Text},{textBox6.Text},'{SupId}',{textBox7.Text},'{textBox8.Text}')";
-                if (cmd1.ExecuteNonQuery() > 0)
-                {
-                    cmd1.CommandText = $"INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) VALUES('{MainForm.UserId}','{textBox1.Text}',{textBox6.Text},1)";
-                    cmd1.ExecuteNonQuery();
-                }                
+                cmd1.CommandText = $"INSERT INTO Products([MB001],[MB002],[MB003],[MB004],[MB051],[MB064],[SupId],[CostPrice],[GpSno]) VALUES('{textBox1.Text}','{textBox2.Text}','{textBox3.Text}','{textBox4.Text}',{textBox5.Text},0,'{SupId}',{textBox7.Text},'{textBox8.Text}')";            
 
             }//修改
-            else 
+            if (cmd1.ExecuteNonQuery() > 0)
             {
-                decimal tmp = textBox6.Value - Convert.ToDecimal(DR[5]);
-                if (cmd1.ExecuteNonQuery() > 0)
-                {
-                    if (tmp > 0)
-                    {
-                        cmd1.CommandText = $"INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) VALUES('{MainForm.UserId}','{textBox1.Text}',{tmp},1)";
-                        cmd1.ExecuteNonQuery();
-                    }
-                    else if (tmp < 0)
-                    {
-                        cmd1.CommandText = $"INSERT INTO [PDList]([userid],[MB001],[Quty],[InOut]) VALUES('{MainForm.UserId}','{textBox1.Text}',{Math.Abs(tmp)},-1)";
-                        cmd1.ExecuteNonQuery();
-                    }
-                }
+                DR[0] = textBox1.Text;//MB001
+                DR[1] = textBox2.Text;//MB002
+                DR[2] = textBox3.Text; //MB003   
+                DR[3] = textBox4.Text;//MB004
+                DR[4] = textBox5.Value;//MB051
+                DR[6] = textBox8.Text.Trim();//GpSno
+                DR[8] = SupId;//SupId
+                DR[9] = textBox7.Value;//CostPrice
             }
-            DR[0]= textBox1.Text;//MB001
-            DR[1]= textBox2.Text;//MB002
-            DR[2] = textBox3.Text; //MB003   
-            DR[3] = textBox4.Text;//MB004
-            DR[4] = textBox5.Value;//MB051
-            DR[5] = textBox6.Value; //MB064
-            DR[6] = textBox8.Text.Trim();//GpSno
-            DR[8] = SupId;//SupId
-            DR[9] = textBox7.Value;//CostPrice
         }
 
         private void EditProduct_Load(object sender, EventArgs e)
@@ -85,7 +65,6 @@ namespace WTools
                 textBox3.Text= DR[2].ToString();
                 textBox4.Text= DR[3].ToString();
                 textBox5.Text= DR[4].ToString();
-                textBox6.Text = DR[5].ToString();
                 textBox7.Text = DR[9].ToString();
                 textBox8.Text = DR[6].ToString();
                 combbox1.Text = DR[8].ToString();

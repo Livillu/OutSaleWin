@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WTools.MigPrint;
 
 namespace WTools
 {
@@ -59,6 +60,10 @@ namespace WTools
                         cmd1.CommandText = "Update MSales SET [Isok]='0' WHERE Sno='" + textBox1.Text.Trim() + "'";
                         cmd1.ExecuteNonQuery();
                         sqlTransaction.Commit();
+                        /*
+                         * 電子發票XML上傳檔
+                        MigXml.F0501ToXmls("MT43487100", "TEST...");
+                        */
                         this.Close();
 
                     } catch { 

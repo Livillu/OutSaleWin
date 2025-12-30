@@ -101,6 +101,9 @@
     <Reference Include="QRCoder, Version=1.7.0.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.7.0\lib\net40\QRCoder.dll</HintPath>
     </Reference>
+    <Reference Include="QREncrypter">
+      <HintPath>C:\Users\nice\Downloads\電子發票QRCode說明文件\加解密工具\dll\MS.Net\QREncrypter.dll</HintPath>
+    </Reference>
     <Reference Include="ScottPlot, Version=5.1.57.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>..\packages\ScottPlot.5.1.57\lib\net462\ScottPlot.dll</HintPath>
     </Reference>
@@ -122,6 +125,9 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=10.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.1\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -185,12 +191,6 @@
     <Compile Include="dialogtext.Designer.cs">
       <DependentUpon>dialogtext.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditProduct.Designer.cs">
-      <DependentUpon>EditProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +215,10 @@
     <Compile Include="InvoicePrint.Designer.cs">
       <DependentUpon>InvoicePrint.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailTools.cs" />
+    <Compile Include="MigPrint\MIG4.cs" />
+    <Compile Include="MigPrint\MigCommon.cs" />
+    <Compile Include="MigPrint\MigXml.cs" />
     <Compile Include="PostDesk\FShowLost.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +233,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleOrder\InvoicePrint.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserAssember.cs">
       <SubType>UserControl</SubType>
@@ -248,23 +253,11 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl2.Designer.cs">
-      <DependentUpon>UserControl2.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl3.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl3.Designer.cs">
       <DependentUpon>UserControl3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl4.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl4.Designer.cs">
-      <DependentUpon>UserControl4.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl5.cs">
       <SubType>UserControl</SubType>
@@ -296,11 +289,23 @@
     <Compile Include="UserStockLocal.Designer.cs">
       <DependentUpon>UserStockLocal.cs</DependentUpon>
     </Compile>
+    <Compile Include="warehouse\FCheckProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="warehouse\FCheckProduct.Designer.cs">
+      <DependentUpon>FCheckProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="warehouse\UserAdjust.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="warehouse\UserAdjust.Designer.cs">
       <DependentUpon>UserAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="warehouse\UserGetStock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserGetStock.Designer.cs">
+      <DependentUpon>UserGetStock.cs</DependentUpon>
     </Compile>
     <Compile Include="warehouse\UserOrderList.cs">
       <SubType>UserControl</SubType>
@@ -314,6 +319,12 @@
     <Compile Include="warehouse\UserProductClass.Designer.cs">
       <DependentUpon>UserProductClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="warehouse\UserProductCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="warehouse\UserProductCreate.Designer.cs">
+      <DependentUpon>UserProductCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="warehouse\UserPtCheck.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -326,6 +337,7 @@
     <Compile Include="warehouse\UserSearchstock.Designer.cs">
       <DependentUpon>UserSearchstock.cs</DependentUpon>
     </Compile>
+    <Compile Include="warehouse\WarehouseTools.cs" />
     <EmbeddedResource Include="BuyOrder\UseSupportInfo.resx">
       <DependentUpon>UseSupportInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,9 +355,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogtext.resx">
       <DependentUpon>dialogtext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditProduct.resx">
-      <DependentUpon>EditProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -384,14 +393,8 @@
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl2.resx">
-      <DependentUpon>UserControl2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl3.resx">
       <DependentUpon>UserControl3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl4.resx">
-      <DependentUpon>UserControl4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl5.resx">
       <DependentUpon>UserControl5.cs</DependentUpon>
@@ -408,14 +411,23 @@
     <EmbeddedResource Include="UserStockLocal.resx">
       <DependentUpon>UserStockLocal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\FCheckProduct.resx">
+      <DependentUpon>FCheckProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="warehouse\UserAdjust.resx">
       <DependentUpon>UserAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserGetStock.resx">
+      <DependentUpon>UserGetStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="warehouse\UserOrderList.resx">
       <DependentUpon>UserOrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="warehouse\UserProductClass.resx">
       <DependentUpon>UserProductClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="warehouse\UserProductCreate.resx">
+      <DependentUpon>UserProductCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="warehouse\UserPtCheck.resx">
       <DependentUpon>UserPtCheck.cs</DependentUpon>
@@ -519,7 +531,6 @@
   <ItemGroup>
     <Folder Include="Account\" />
     <Folder Include="BasesSet\" />
-    <Folder Include="SaleOrder\" />
     <Folder Include="Support\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
