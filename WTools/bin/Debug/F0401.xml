@@ -2,7 +2,7 @@
   <Main>
     <InvoiceNumber>MT43487100</InvoiceNumber>
     <InvoiceDate>20250509</InvoiceDate>
-    <InvoiceTime>13:55:30</InvoiceTime>
+    <InvoiceTime>14:31:17</InvoiceTime>
     <Seller>
       <Identifier>53290529</Identifier>
       <Name>璿智國際寵物科技有限公司</Name>
@@ -19,14 +19,12 @@
   </Main>
   <Details>
     <ProductItem>
-      <ProductItem>
-        <Description>打樣費</Description>
-        <Quantity>1.000</Quantity>
-        <UnitPrice>3000.000000</UnitPrice>
-        <TaxType>1</TaxType>
-        <Amount>3000.000000</Amount>
-        <SequenceNumber>1</SequenceNumber>
-      </ProductItem>
+      <Description>打樣費</Description>
+      <Quantity>1.000</Quantity>
+      <UnitPrice>3000.000000</UnitPrice>
+      <TaxType>1</TaxType>
+      <Amount>3000.000000</Amount>
+      <SequenceNumber>1</SequenceNumber>
     </ProductItem>
   </Details>
   <Amount>

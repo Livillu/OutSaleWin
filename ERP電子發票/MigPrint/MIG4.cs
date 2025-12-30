@@ -4,8 +4,13 @@ using ScottPlot.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Windows;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using static WTools.MigPrint.MIG4.F0401;
+using static WTools.MigPrint.MIG4.F0401.Invoice;
+using static WTools.MigPrint.MIG4.F0501;
 using AllowanceNumberType = System.String;
 using AllowanceTypeEnum = System.String;
 using BAN = System.String;
@@ -39,7 +44,7 @@ namespace WTools.MigPrint
                 [XmlAttribute("schemaLocation", Namespace = XmlSchema.InstanceNamespace)]
                 public string xsiSchemaLocation = "urn:GEINV:eInvoiceMessage:F0401:4.1 F0401.xsd";
                 public Main Main { set; get; }
-                public List<ProductItem> Details { set; get; }
+                public Details Details { set; get; }
                 public Amount Amount { set; get; }
             }
             public class Main
@@ -49,14 +54,15 @@ namespace WTools.MigPrint
                 public TimeType InvoiceTime { set; get; }
                 public RoleDescriptionType Seller { set; get; }
                 public RoleDescriptionType Buyer { set; get; }
+                //public CustomsClearanceMarkEnum CustomsClearanceMark { set; get; }
                 public InvoiceTypeEnum InvoiceType { set; get; }
                 public DonateMarkEnum DonateMark { set; get; }
                 public string PrintMark { set; get; }
             }
-            /*public class Details
+            public class Details
             {
                 public List<ProductItem> ProductItem;//`xml:"ProductItem"`
-            }*/
+            }
             public class ProductItem
             {
                 public string Description { set; get; }//   `xml:"Description"`
@@ -103,9 +109,10 @@ namespace WTools.MigPrint
                 }
                 return main;
             }
-            private List<ProductItem> GetDetails(string invoiceid)
+            private Details GetDetails(string invoiceid)
             {
-                List<ProductItem> details = new List<ProductItem>();
+                Details details = new Details();
+                details.ProductItem = new List<ProductItem>();
                 string sqlstring = "SELECT TH005,TH008,TH012,TH013,CAST(TH003 AS INT) TH003,TH018 FROM [COPTH] ";
                 sqlstring += $"INNER JOIN [COPTG] ON TH001=TG001 AND TH002=TG002 WHERE TG014='{invoiceid}'";
                 SqlConnection conn1 = new SqlConnection(MainForm.WP01);
@@ -125,7 +132,7 @@ namespace WTools.MigPrint
                     tmp.TaxType = "1";
                     tmp.Amount= Convert.ToDecimal(sdr["TH013"]);
                     tmp.SequenceNumber= sdr["TH003"].ToString();
-                    details.Add(tmp);
+                    details.ProductItem.Add(tmp);
                 }
                 return details;
             }
@@ -160,7 +167,7 @@ namespace WTools.MigPrint
                 result.data.Details = GetDetails(invoiceid);
                 result.msg += Main_Checked(result.data.Main);
                 result.msg += Amount_Checked(result.data.Amount);
-                result.msg += Details_Checked(invoiceid, result.data.Details);
+                result.msg += Details_Checked(invoiceid, result.data.Details.ProductItem);
                 if (result.msg != "")
                 {
                     result.msg = "發票號碼:" + invoiceid + "[" + result.msg + "]\n";

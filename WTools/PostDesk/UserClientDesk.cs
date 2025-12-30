@@ -650,7 +650,6 @@ namespace WTools.PostDesk
         {
             TmpButtonConfig(2);
         }
-
         /*
          * 電子發票上傳
         private void button24_Click(object sender, EventArgs e)

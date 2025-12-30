@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "D:\\Csharp\\OutSaleWin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\postdesk\\userclientdesk.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\migprint\\migxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\migprint\\migxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\postdesk\\userclientdesk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|d:\\csharp\\outsalewin\\wtools\\migprint\\mig4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\migprint\\mig4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\migprint\\mig4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\migprint\\migcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\migprint\\migcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|D:\\Csharp\\OutSaleWin\\wtools\\migprint\\migxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAD270C5-4059-42F2-80A1-77A2B57184DE}|WTools\\outsale.csproj|solutionrelative:wtools\\migprint\\migxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,23 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "invoice.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeDocumentMoniker": "WTools\\invoice.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs [\u8A2D\u8A08]",
-              "RelativeToolTip": "WTools\\invoice.cs [\u8A2D\u8A08]",
+              "DocumentIndex": 0,
+              "Title": "UserClientDesk.Designer.cs",
+              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.Designer.cs",
+              "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.Designer.cs",
+              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.Designer.cs",
+              "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.Designer.cs",
+              "ViewState": "AgIAAPoCAAAAAAAAAAAYwP8CAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T05:59:51.658Z",
-              "EditorCaption": " [\u8A2D\u8A08]"
+              "WhenOpened": "2025-12-30T06:32:41.054Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MigXml.cs",
               "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\MigPrint\\MigXml.cs",
               "RelativeDocumentMoniker": "WTools\\MigPrint\\MigXml.cs",
@@ -67,39 +64,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "invoice.cs",
-              "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeDocumentMoniker": "WTools\\invoice.cs",
-              "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\invoice.cs",
-              "RelativeToolTip": "WTools\\invoice.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAYwD8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-29T23:58:44.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "MigCommon.cs",
               "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\MigPrint\\MigCommon.cs",
               "RelativeDocumentMoniker": "WTools\\MigPrint\\MigCommon.cs",
               "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\MigPrint\\MigCommon.cs",
               "RelativeToolTip": "WTools\\MigPrint\\MigCommon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-26T01:19:22.707Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "MIG4.cs",
               "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\MigPrint\\MIG4.cs",
               "RelativeDocumentMoniker": "WTools\\MigPrint\\MIG4.cs",
               "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\MigPrint\\MIG4.cs",
               "RelativeToolTip": "WTools\\MigPrint\\MIG4.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAACQAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAQwNEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-26T00:28:28.007Z",
               "EditorCaption": ""
@@ -112,14 +96,14 @@
               "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
               "ToolTip": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
               "RelativeToolTip": "WTools\\PostDesk\\UserClientDesk.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAQwDIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIMCAAAAAAAAAAAxwIsCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T08:21:26.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "UserClientDesk.cs [\u8A2D\u8A08]",
               "DocumentMoniker": "D:\\Csharp\\OutSaleWin\\WTools\\PostDesk\\UserClientDesk.cs",
               "RelativeDocumentMoniker": "WTools\\PostDesk\\UserClientDesk.cs",
